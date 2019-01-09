@@ -1,14 +1,43 @@
 <ion-header>
+  
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+ 
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="img/avatar-cher.png">
+    </ion-avatar>
+    <p>gleicy</p>
+  </ion-item>
+
+
+  <ion-card>
+      <ion-card-content>
+          All things considered, the by far easiest 
+          solution is to just provide an array of names if the app needs to use names other than the default English version of month and day names. 
+
+       </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <ion-note>
+          {{username}}
+        </ion-note>
+      </ion-col>
+      <ion-col>
+          <ion-note>
+            
+          </ion-note>
+        </ion-col>
+    </ion-row>
+    </ion-card>
+
 </ion-content>
