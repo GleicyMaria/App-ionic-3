@@ -6,6 +6,7 @@
         <ion-icon name="exit"></ion-icon>
       </button>
     </ion-buttons>
+    
   </ion-navbar>
 
 </ion-header>
@@ -13,17 +14,22 @@
 <ion-content padding>
  
   <ion-item>
-    <ion-avatar item-start>
-      <img src="img/avatar-cher.png">
-    </ion-avatar>
-    <p>gleicy</p>
+    
+     <ion-item>
+     <h2>{{name}}</h2>
+     <p>{{username}}</p>  
+    </ion-item>
   </ion-item>
-
-
-  <ion-card>
+  
+  <ion-card (click)="detailPost()">
+      <ion-card-header>
+          Titulo
+        </ion-card-header>
       <ion-card-content>
           All things considered, the by far easiest 
-          solution is to just provide an array of names if the app needs to use names other than the default English version of month and day names. 
+          solution is to just provide an array of names 
+          if the app needs to use nameassasasasasas other than the default 
+          English version of month and day names. 
 
        </ion-card-content>
     <ion-row>
@@ -32,12 +38,27 @@
           {{username}}
         </ion-note>
       </ion-col>
+      <ion-col></ion-col>
+      
       <ion-col>
           <ion-note>
-            
+            09/01/2019 15:21(ajustar) 
           </ion-note>
         </ion-col>
     </ion-row>
     </ion-card>
+ 
+    
+   
+    <button ion-button full outline round (click)="listPost()">
+        <ion-icon name="list-box"></ion-icon>
+        Post
+    </button>
+    
+    <button class="mensagem" ion-button  full outline round (click)="listMessage()" >
+        <ion-icon name="mail"></ion-icon>
+        Mensagens
+    </button>
+  
 
 </ion-content>
