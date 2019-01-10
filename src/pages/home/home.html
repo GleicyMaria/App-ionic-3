@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-buttons start>
       <button ion-button icon-only (click)="logout()">
-        <ion-icon name="exit"></ion-icon>
+        <ion-icon  name="exit" color="red"></ion-icon>
       </button>
     </ion-buttons>
     
@@ -18,40 +18,13 @@
           <img src="./assets/imgs/icon.png">
       </ion-avatar>
      
-     <h2>{{name}}</h2>
-     <p>{{username}}</p>  
+     <h2>{{objeto_user.name}}</h2>
+     <p>{{objeto_user.username}}</p>  
     
   </ion-item>
   
-  <ion-card  (click)="detailPost()">
-      <ion-card-header>
-          Titulo
-        </ion-card-header>
-      <ion-card-content>
-          All things considered, the by far easiest 
-          solution is to just provide an array of names 
-          if the app needs to use nameassasasasasas other than the default 
-          English version of month and day names. 
+         <post></post>
 
-       </ion-card-content>
-    <ion-row>
-      <ion-col>
-        <ion-note>
-          {{username}}
-        </ion-note>
-      </ion-col>
-      <ion-col></ion-col>
-      
-      <ion-col>
-          <ion-note>
-            09/01/2019 15:21(ajustar) 
-          </ion-note>
-        </ion-col>
-    </ion-row>
-    </ion-card>
- 
-    
-   
     <button ion-button block outline round (click)="listPost()">
         <ion-icon name="list-box"></ion-icon>
         Post

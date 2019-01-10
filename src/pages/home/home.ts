@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { DetalhePostPage } from '../detalhe-post/detalhe-post';
+
 import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
 import { ListaPostPage } from '../lista-post/lista-post';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
@@ -11,8 +11,20 @@ import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public name = "Gleicy Maria"
-  public username:string ="Gleicy";
+  public objeto_user ={
+    name:"Gleicy Maria",
+    username:"gleicymaria"
+
+  }
+
+  public objeto_postDestaque ={
+    titulo:"Lorem ipsum",
+    conteudo:"Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+    data:"09/01/2019 15:21",
+    autor:"gleicymaria"
+    
+  }
+  
   
   constructor(public navCtrl: NavController) {
 
@@ -22,9 +34,7 @@ export class HomePage {
     this.navCtrl.setRoot(LoginPage);
   }
 
-  detailPost(){
-    this.navCtrl.push(DetalhePostPage);
-  }
+  
 
   listMessage(){
     this.navCtrl.push(ListaMensagemPage);

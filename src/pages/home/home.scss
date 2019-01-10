@@ -11,11 +11,18 @@ page-home {
         margin: $marginMensagem;
     }
 
+    .col p{
+        font-size: 11px;
+    }
+    
     .item-md ion-avatar img {
         width: $tamanhoAvatar;
         height: $tamanhoAvatar;
       }
 
+      .bar-button-default-md {
+        color:color($colors,danger)
     
+    }
 
 }

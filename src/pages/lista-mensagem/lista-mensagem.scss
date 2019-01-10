@@ -1,3 +1,18 @@
 page-lista-mensagem {
+    $distanciaRightIcon:50px;
+    .searchbar-md{
+        padding: 0;
+    }
 
+    .searchbar-md .searchbar-input {
+        color:color($colors,light);
+        background-color:color($colors,primary) ;
+        
+      }
+
+      .searchbar-md .searchbar-search-icon  {
+        right:$distanciaRightIcon;
+        left:unset;
+        color:color($colors,light)
+      }
 }

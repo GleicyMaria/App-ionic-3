@@ -13,10 +13,17 @@ import { ListaPostPageModule } from '../pages/lista-post/lista-post.module';
 import { MensagemPageModule } from '../pages/mensagem/mensagem.module';
 import { AlterarFotoPageModule } from '../pages/alterar-foto/alterar-foto.module';
 
+import { PostComponent } from '../components/post/post';
+
+
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    PostComponent
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -26,7 +33,9 @@ import { AlterarFotoPageModule } from '../pages/alterar-foto/alterar-foto.module
     ListaMensagemPageModule,
     ListaPostPageModule,
     MensagemPageModule,
-    AlterarFotoPageModule
+    AlterarFotoPageModule,
+    
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [

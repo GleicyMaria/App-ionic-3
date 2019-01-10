@@ -1,10 +1,32 @@
 page-login {
-    $margin: 0 auto;
-    
+    $margin: 70px auto;
+    $sizeFontCheck: 12px;
+    $sizeImg:100px;
+    $loginColor:     #FF8C00; 
+    $textLembraColor: #808080;
  img{
+    
     display:block; 
     margin: $margin;
+    width: $sizeImg;
+    height: $sizeImg;
+ }
+ .check{
+    font-size: $sizeFontCheck;
+    
  }
 
- 
+  #lbl-0, #lbl-1{
+   font-weight: bold;
+ }
+
+ #lbl-2{
+   font-size: 12px;
+   color:$textLembraColor;
+}
+
+ .button-md {
+    background-color: $loginColor;
+    width: 150px;
+ }
 }
