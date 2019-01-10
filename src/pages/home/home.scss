@@ -1,6 +1,7 @@
 page-home {
     $distancia_top:20px;
     $marginMensagem: 20px auto;
+    $tamanhoAvatar:100px;
     
     .button-full-md {
         top: $distancia_top;
@@ -9,6 +10,11 @@ page-home {
     .mensagem{
         margin: $marginMensagem;
     }
+
+    .item-md ion-avatar img {
+        width: $tamanhoAvatar;
+        height: $tamanhoAvatar;
+      }
 
     
 

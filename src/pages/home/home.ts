@@ -4,6 +4,7 @@ import { LoginPage } from '../login/login';
 import { DetalhePostPage } from '../detalhe-post/detalhe-post';
 import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
 import { ListaPostPage } from '../lista-post/lista-post';
+import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
 
 @Component({
   selector: 'page-home',
@@ -32,6 +33,9 @@ export class HomePage {
   listPost(){
     this.navCtrl.push(ListaPostPage)
   }
-
+   
+  changePhoto(){
+    this.navCtrl.push(AlterarFotoPage)
+  }
  
 }

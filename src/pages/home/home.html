@@ -14,7 +14,7 @@
 <ion-content padding>
  
   <ion-item>
-      <ion-avatar item-start (click)=>
+      <ion-avatar item-start (click)="changePhoto()">
           <img src="./assets/imgs/icon.png">
       </ion-avatar>
      
@@ -23,7 +23,7 @@
     
   </ion-item>
   
-  <ion-card (click)="detailPost()">
+  <ion-card  (click)="detailPost()">
       <ion-card-header>
           Titulo
         </ion-card-header>
@@ -52,12 +52,12 @@
  
     
    
-    <button ion-button full outline round (click)="listPost()">
+    <button ion-button block outline round (click)="listPost()">
         <ion-icon name="list-box"></ion-icon>
         Post
     </button>
     
-    <button class="mensagem" ion-button  full outline round (click)="listMessage()" >
+    <button class="mensagem" ion-button  block outline round (click)="listMessage()" >
         <ion-icon name="mail"></ion-icon>
         Mensagens
     </button>

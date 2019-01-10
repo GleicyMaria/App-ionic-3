@@ -11,6 +11,7 @@ import { DetalhePostPageModule } from '../pages/detalhe-post/detalhe-post.module
 import { ListaMensagemPageModule } from '../pages/lista-mensagem/lista-mensagem.module';
 import { ListaPostPageModule } from '../pages/lista-post/lista-post.module';
 import { MensagemPageModule } from '../pages/mensagem/mensagem.module';
+import { AlterarFotoPageModule } from '../pages/alterar-foto/alterar-foto.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MensagemPageModule } from '../pages/mensagem/mensagem.module';
     DetalhePostPageModule,
     ListaMensagemPageModule,
     ListaPostPageModule,
-    MensagemPageModule
+    MensagemPageModule,
+    AlterarFotoPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
