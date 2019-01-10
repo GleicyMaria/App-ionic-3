@@ -7,12 +7,26 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>listaMensagem</ion-title>
-  </ion-navbar>
-
+    <ion-title>Mensagens </ion-title>
+    </ion-navbar>
+    <ion-searchbar ></ion-searchbar>
 </ion-header>
 
 
 <ion-content padding>
+    
+  <ion-card>
+        
+        <ion-list>
+          <ion-item (click)="detailsMessage()">
+            <p>Mensagem 1</p>
+          </ion-item>
+          
+          <ion-item>
+              <p>Mensagem 2</p>
+            </ion-item>
+
+        </ion-list>
+      </ion-card>
 
 </ion-content>

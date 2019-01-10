@@ -10,6 +10,7 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { DetalhePostPageModule } from '../pages/detalhe-post/detalhe-post.module';
 import { ListaMensagemPageModule } from '../pages/lista-mensagem/lista-mensagem.module';
 import { ListaPostPageModule } from '../pages/lista-post/lista-post.module';
+import { MensagemPageModule } from '../pages/mensagem/mensagem.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ListaPostPageModule } from '../pages/lista-post/lista-post.module';
     LoginPageModule,
     DetalhePostPageModule,
     ListaMensagemPageModule,
-    ListaPostPageModule
+    ListaPostPageModule,
+    MensagemPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

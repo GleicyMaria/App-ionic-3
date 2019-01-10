@@ -1,7 +1,7 @@
 page-home {
     $distancia_top:20px;
     $marginMensagem: 20px auto;
-    $marginNome: auto 30px;
+    
     .button-full-md {
         top: $distancia_top;
     }
@@ -10,8 +10,6 @@ page-home {
         margin: $marginMensagem;
     }
 
-    .item-inner {
-        margin: $marginNome;
-    }
+    
 
 }

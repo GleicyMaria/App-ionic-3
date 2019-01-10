@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DetalhePostPage } from '../detalhe-post/detalhe-post';
 
 /**
- * Generated class for the ListaPostPage page.
+ * Generated class for the MensagemPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,20 +10,16 @@ import { DetalhePostPage } from '../detalhe-post/detalhe-post';
 
 @IonicPage()
 @Component({
-  selector: 'page-lista-post',
-  templateUrl: 'lista-post.html',
+  selector: 'page-mensagem',
+  templateUrl: 'mensagem.html',
 })
-export class ListaPostPage {
+export class MensagemPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListaPostPage');
-  }
-
-  detailPost(){
-    this.navCtrl.push(DetalhePostPage);
+    console.log('ionViewDidLoad MensagemPage');
   }
 
 }

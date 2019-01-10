@@ -33,4 +33,5 @@ export class HomePage {
     this.navCtrl.push(ListaPostPage)
   }
 
+ 
 }
