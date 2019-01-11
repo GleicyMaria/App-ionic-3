@@ -6,15 +6,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+
+import { PostProvider } from '../providers/post/post';
+import { ComponentsModule } from '../components/components.module';
+import { HttpClientModule } from '@angular/common/http';
 import { LoginPageModule } from '../pages/login/login.module';
-import { DetalhePostPageModule } from '../pages/detalhe-post/detalhe-post.module';
-import { ListaMensagemPageModule } from '../pages/lista-mensagem/lista-mensagem.module';
-
-import { MensagemPageModule } from '../pages/mensagem/mensagem.module';
-import { AlterarFotoPageModule } from '../pages/alterar-foto/alterar-foto.module';
-
-import { PostComponent } from '../components/post/post';
-import { ListaPostPage } from '../pages/lista-post/lista-post';
 
 
 
@@ -23,8 +19,7 @@ import { ListaPostPage } from '../pages/lista-post/lista-post';
   declarations: [
     MyApp,
     HomePage,
-    PostComponent,
-    ListaPostPage,
+    
    
     
     
@@ -32,27 +27,23 @@ import { ListaPostPage } from '../pages/lista-post/lista-post';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    ComponentsModule,
     LoginPageModule,
-    DetalhePostPageModule,
-    ListaMensagemPageModule,
-    MensagemPageModule,
-    AlterarFotoPageModule,
-    
-    
+    HttpClientModule
     
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    PostComponent,
-    ListaPostPage,
+    
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PostProvider
   ]
 })
 export class AppModule {}

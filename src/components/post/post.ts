@@ -14,7 +14,8 @@ import { DetalhePostPage } from '../../pages/detalhe-post/detalhe-post';
   templateUrl: 'post.html'
 })
 export class PostComponent {
-  
+  @Input()
+  listPost:any;
 
   public objeto_postDestaque ={
     titulo:"Lorem ipsum",
@@ -32,7 +33,7 @@ export class PostComponent {
   
   detailPost(){
     
-    this.navCtrl.push(DetalhePostPage, {'detalhe':this.objeto_postDestaque});
+    this.navCtrl.push(DetalhePostPage.name, {'detalhe':this.objeto_postDestaque});
   }
 
 }

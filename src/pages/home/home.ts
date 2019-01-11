@@ -31,21 +31,21 @@ export class HomePage {
   }
 
   logout(){
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.setRoot(LoginPage.name);
   }
 
   
 
   listMessage(){
-    this.navCtrl.push(ListaMensagemPage);
+    this.navCtrl.push(ListaMensagemPage.name);
   }
 
   listPost(){
-    this.navCtrl.push(ListaPostPage)
+    this.navCtrl.push(ListaPostPage.name)
   }
    
   changePhoto(){
-    this.navCtrl.push(AlterarFotoPage)
+    this.navCtrl.push(AlterarFotoPage.name)
   }
  
 }
