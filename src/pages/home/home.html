@@ -1,10 +1,13 @@
+
+
 <ion-header>
-  
+    
   <ion-navbar>
     <ion-buttons start>
-      <button ion-button icon-only (click)="logout()">
-        <ion-icon  name="exit" color="red"></ion-icon>
-      </button>
+        <button ion-button icon-end (click)="logout()">
+          Logout
+            <ion-icon name="exit"></ion-icon>
+            </button>
     </ion-buttons>
     
   </ion-navbar>
@@ -19,7 +22,7 @@
       </ion-avatar>
      
      <h2>{{objeto_user.name}}</h2>
-     <p>{{objeto_user.username}}</p>  
+     <p>{{objeto_user.username}} </p>  
     
   </ion-item>
   

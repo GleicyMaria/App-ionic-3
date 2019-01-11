@@ -14,8 +14,11 @@ import { MensagemPage } from '../mensagem/mensagem';
   selector: 'page-lista-mensagem',
   templateUrl: 'lista-mensagem.html',
 })
-export class ListaMensagemPage {
 
+export class ListaMensagemPage {
+   listaMensagens = new Array<any>();
+
+     
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -26,5 +29,8 @@ export class ListaMensagemPage {
   detailsMessage(){
     this.navCtrl.push(MensagemPage);
   }
+
+ 
+  
 
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { stringify } from '@angular/core/src/render3/util';
+
 
 /**
  * Generated class for the LoginPage page.

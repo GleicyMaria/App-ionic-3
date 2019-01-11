@@ -3,7 +3,7 @@ page-home {
     $marginMensagem: 20px auto;
     $tamanhoAvatar:100px;
     
-    .button-full-md {
+    .button-full {
         top: $distancia_top;
     }
     
@@ -15,14 +15,14 @@ page-home {
         font-size: 11px;
     }
     
-    .item-md ion-avatar img {
+    .item ion-avatar img {
         width: $tamanhoAvatar;
         height: $tamanhoAvatar;
       }
 
-      .bar-button-default-md {
-        color:color($colors,danger)
-    
+      .bar-buttons {
+        background-color:color($colors,danger);
+        border-radius: 5px;
     }
 
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { DetalhePostPage } from '../../pages/detalhe-post/detalhe-post';
 
 
 /**
@@ -13,22 +14,25 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'post.html'
 })
 export class PostComponent {
-  public objeto_user ={
-     username:"gleicymaria"
+  
 
-  }
   public objeto_postDestaque ={
     titulo:"Lorem ipsum",
     conteudo:"Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
-    data:"09/01/2019 15:21",
+    data:"09/01/2019 ",
     autor:"gleicymaria"
     
   }
   
 
   constructor(public navCtrl: NavController) {
-    console.log('Hello PostComponent Component');
+    
     
   }
   
+  detailPost(){
+    
+    this.navCtrl.push(DetalhePostPage, {'detalhe':this.objeto_postDestaque});
+  }
+
 }

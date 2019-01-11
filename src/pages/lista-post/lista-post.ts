@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DetalhePostPage } from '../detalhe-post/detalhe-post';
 
 /**
  * Generated class for the ListaPostPage page.
@@ -21,10 +20,6 @@ export class ListaPostPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaPostPage');
-  }
-
-  detailPost(){
-    this.navCtrl.push(DetalhePostPage);
   }
 
 }

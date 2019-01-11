@@ -7,18 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>TituloPost</ion-title>
+    <ion-title>{{detalhePost.titulo}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <ion-item>
-        <p>Autor</p>
-        <p>data publicação</p>
-        <p>Conteudo</p>
-        </ion-item>
+   
+        <p>Autor: {{detalhePost.autor}}</p>
+        <p>Publicação: {{detalhePost.data}}</p>
+        <p>{{detalhePost.conteudo}}</p>
+    
     
  
 

@@ -9,11 +9,13 @@ import { HomePage } from '../pages/home/home';
 import { LoginPageModule } from '../pages/login/login.module';
 import { DetalhePostPageModule } from '../pages/detalhe-post/detalhe-post.module';
 import { ListaMensagemPageModule } from '../pages/lista-mensagem/lista-mensagem.module';
-import { ListaPostPageModule } from '../pages/lista-post/lista-post.module';
+
 import { MensagemPageModule } from '../pages/mensagem/mensagem.module';
 import { AlterarFotoPageModule } from '../pages/alterar-foto/alterar-foto.module';
 
 import { PostComponent } from '../components/post/post';
+import { ListaPostPage } from '../pages/lista-post/lista-post';
+
 
 
 
@@ -21,7 +23,9 @@ import { PostComponent } from '../components/post/post';
   declarations: [
     MyApp,
     HomePage,
-    PostComponent
+    PostComponent,
+    ListaPostPage,
+   
     
     
   ],
@@ -31,16 +35,18 @@ import { PostComponent } from '../components/post/post';
     LoginPageModule,
     DetalhePostPageModule,
     ListaMensagemPageModule,
-    ListaPostPageModule,
     MensagemPageModule,
     AlterarFotoPageModule,
+    
     
     
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    PostComponent,
+    ListaPostPage,
 
   ],
   providers: [
