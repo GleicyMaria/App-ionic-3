@@ -18,8 +18,8 @@
   <ion-card>
 
     <ion-list>
-      <ion-item >
-        <p>Mensagem 1</p>
+      <ion-item *ngFor="let mensagem of listMensagens"  (click)="detailsMessage(mensagem)" >
+        <p>{{mensagem}}</p>
       </ion-item>
 
       

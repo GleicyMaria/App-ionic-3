@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MensagemPage } from '../mensagem/mensagem';
+import { MensagemProvider } from '../../providers/mensagem/mensagem';
 
 /**
  * Generated class for the ListaMensagemPage page.
@@ -16,18 +17,33 @@ import { MensagemPage } from '../mensagem/mensagem';
 })
 
 export class ListaMensagemPage {
-   listaMensagens = new Array<any>();
+  private listMensagens: any = new Array();
+  
 
      
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private mensagemPrivider:MensagemProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaMensagemPage');
+  
+    this.mensagemPrivider.getMensagens().subscribe(
+    
+      (data)=>{
+        console.log(data)
+        this.listMensagens = data
+      }, error =>{
+        console.log(error);
+      }
+    )
+  
   }
 
-  detailsMessage(){
-    this.navCtrl.push(MensagemPage);
+
+  detailsMessage(mensagem){
+    this.navCtrl.push(MensagemPage.name,{'mensagem': mensagem});
   }
 
  

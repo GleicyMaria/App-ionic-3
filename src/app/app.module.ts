@@ -12,6 +12,7 @@ import { ComponentsModule } from '../components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginPageModule } from '../pages/login/login.module';
 import { MensagemProvider } from '../providers/mensagem/mensagem';
+import { UserProvider } from '../providers/user/user';
 
 
 
@@ -46,7 +47,8 @@ import { MensagemProvider } from '../providers/mensagem/mensagem';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PostProvider,
     PostProvider,
-    MensagemProvider
+    MensagemProvider,
+    UserProvider
   ]
 })
 export class AppModule {}
