@@ -27,7 +27,9 @@ export class ListaPostPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaPostPage');
+    
     this.postPrivider.getPosts().subscribe(
+    
       (data) =>{
         console.log(data)
         this.listPosts = data;
@@ -36,6 +38,7 @@ export class ListaPostPage {
         console.log(error);
       }
     )
+    
   }
 
   

@@ -11,6 +11,7 @@ import { PostProvider } from '../providers/post/post';
 import { ComponentsModule } from '../components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginPageModule } from '../pages/login/login.module';
+import { MensagemProvider } from '../providers/mensagem/mensagem';
 
 
 
@@ -43,7 +44,9 @@ import { LoginPageModule } from '../pages/login/login.module';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PostProvider
+    PostProvider,
+    PostProvider,
+    MensagemProvider
   ]
 })
 export class AppModule {}

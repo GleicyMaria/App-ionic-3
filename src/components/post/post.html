@@ -1,21 +1,23 @@
 <ion-card  (click)="detailPost()">
     <ion-card-header>
-        {{objeto_postDestaque.titulo}}
+        {{post.titulo}}
       </ion-card-header>
     <ion-card-content>
-        {{objeto_postDestaque.conteudo}}
+       <p id="mensagem">
+         {{post.mensagem}}
+        </p> 
     </ion-card-content>
   <ion-row padding >
     <ion-col>
       <p>
-        {{objeto_postDestaque.autor}}
+        {{post.autor}}
       </p>
     </ion-col>
     <ion-col></ion-col>
     
     <ion-col>
         <p>
-          {{objeto_postDestaque.data}} 
+          {{post.data}} 
         </p>
       </ion-col>
   </ion-row>

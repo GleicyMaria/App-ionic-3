@@ -16,12 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class DetalhePostPage {
   
   
-  detalhePost = {
-  titulo:"",
-  autor:"",
-  conteudo:"",
-  data:"",
-  }
+  detalhePost:any;
 
 
   
@@ -36,11 +31,7 @@ export class DetalhePostPage {
 
   getDetalhes(){
    let detalhes = this.navParams.get('detalhe');
-   this.detalhePost.titulo = detalhes.titulo;
-   this.detalhePost.autor = detalhes.autor;
-   this.detalhePost.conteudo = detalhes.conteudo;
-   this.detalhePost.data = detalhes.data;
-   
+   this.detalhePost = detalhes;
   }
 
 }

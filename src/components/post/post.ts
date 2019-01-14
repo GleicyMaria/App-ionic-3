@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { DetalhePostPage } from '../../pages/detalhe-post/detalhe-post';
 
 
+
 /**
  * Generated class for the PostComponent component.
  *
@@ -15,25 +16,21 @@ import { DetalhePostPage } from '../../pages/detalhe-post/detalhe-post';
 })
 export class PostComponent {
   @Input()
-  listPost:any;
-
-  public objeto_postDestaque ={
-    titulo:"Lorem ipsum",
-    conteudo:"Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
-    data:"09/01/2019 ",
-    autor:"gleicymaria"
-    
-  }
-  
+  post:any;
+ 
 
   constructor(public navCtrl: NavController) {
     
-    
+    console.log(this.getName());
   }
   
   detailPost(){
     
-    this.navCtrl.push(DetalhePostPage.name, {'detalhe':this.objeto_postDestaque});
+    this.navCtrl.push(DetalhePostPage.name, {'detalhe':this.post});
+    console.log(this.post.mensagem + "post");
+  }
+  getName():string{
+    return this.post;
   }
 
 }

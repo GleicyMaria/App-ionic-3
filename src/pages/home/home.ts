@@ -5,6 +5,7 @@ import { LoginPage } from '../login/login';
 import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
 import { ListaPostPage } from '../lista-post/lista-post';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
+import { PostProvider } from '../../providers/post/post';
 
 @Component({
   selector: 'page-home',
@@ -17,25 +18,39 @@ export class HomePage {
 
   }
 
-  public objeto_postDestaque ={
-    titulo:"Lorem ipsum",
-    conteudo:"Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
-    data:"09/01/2019 15:21",
-    autor:"gleicymaria"
+  postDestaque:any;
     
-  }
   
   
-  constructor(public navCtrl: NavController) {
+  
+  constructor(public navCtrl: NavController,
+    private postPrivider:PostProvider) {
 
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ListaPostPage');
+    
+    this.postPrivider.getLetPost().subscribe(
+    
+      (data) =>{
+        console.log(data)
+        this.postDestaque = data;
+        
+      }, error =>{
+        console.log(error);
+      }
+
+      
+    )
+    
   }
 
   logout(){
     this.navCtrl.setRoot(LoginPage.name);
   }
-
   
-
   listMessage(){
     this.navCtrl.push(ListaMensagemPage.name);
   }
@@ -47,5 +62,7 @@ export class HomePage {
   changePhoto(){
     this.navCtrl.push(AlterarFotoPage.name)
   }
+
+  
  
 }

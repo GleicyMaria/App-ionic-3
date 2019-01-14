@@ -1,4 +1,11 @@
 post {
+
+    p#mensagem {
+        max-width: 60ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     .card {
         background-color:$colorCard;
         border-radius: 10px;
