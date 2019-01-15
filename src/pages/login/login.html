@@ -7,26 +7,26 @@
 
 
 <ion-content padding>
-     <img src="./assets/imgs/network.png" alt="">
-    <ion-list >
-        <ion-item>
-          <ion-label stacked>Username</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label stacked>Password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-                  
-      </ion-list>
-    
-      <ion-item class="check">
-        <ion-checkbox  color="dark"></ion-checkbox>
-        <ion-label >Lembrar</ion-label>
-      </ion-item>
+  <img src="./assets/imgs/network.png" alt="">
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Username</ion-label>
+      <ion-input type="text" #user></ion-input>
+    </ion-item>
 
-       <button ion-button float-right round (click)="login()">Login</button>
-      
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password" #password></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-item class="check">
+    <ion-checkbox color="dark"></ion-checkbox>
+    <ion-label>Lembrar</ion-label>
+  </ion-item>
+
+  <button ion-button float-right round (click)="login(user.value,password.value)">Login</button>
+
 
 </ion-content>

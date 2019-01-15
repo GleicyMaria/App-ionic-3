@@ -1,46 +1,44 @@
-
-
 <ion-header>
-    
-  <ion-navbar>
-    <ion-buttons start>
-        <button ion-button icon-end (click)="logout()">
-          Logout
-            <ion-icon name="exit"></ion-icon>
+
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button icon-end (click)="logout()">
+                Logout
+                <ion-icon name="exit"></ion-icon>
             </button>
-    </ion-buttons>
-    
-  </ion-navbar>
+        </ion-buttons>
+
+    </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
- 
-  <ion-item>
-      <ion-avatar item-start (click)="changePhoto()">
-          <img src="./assets/imgs/icon.png">
-      </ion-avatar>
-     
-     <h2>{{objeto_user.name}}</h2>
-     <p>{{objeto_user.username}} </p>  
-    
-  </ion-item>
 
-        
-        <div *ngIf ="postDestaque != null">
-            <post [post]="postDestaque"  ></post>
+    <ion-item>
+        <ion-avatar item-start (click)="changePhoto()">
+            <img src="./assets/imgs/icon.png">
+        </ion-avatar>
+        <div *ngIf="user != null">
+            <h2>{{user.nome}}</h2>
+            <p>{{user.login}} </p>
         </div>
-         
+    </ion-item>
+
+
+    <div *ngIf="postDestaque != null">
+        <post [post]="postDestaque"></post>
+    </div>
+
 
     <button ion-button block outline round (click)="listPost()">
         <ion-icon name="list-box"></ion-icon>
         Post
     </button>
-    
-    <button class="mensagem" ion-button  block outline round (click)="listMessage()" >
+
+    <button class="mensagem" ion-button block outline round (click)="listMessage()">
         <ion-icon name="mail"></ion-icon>
         Mensagens
     </button>
-  
+
 
 </ion-content>

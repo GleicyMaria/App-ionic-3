@@ -16,21 +16,16 @@ import { DetalhePostPage } from '../../pages/detalhe-post/detalhe-post';
 })
 export class PostComponent {
   @Input()
-  post:any;
- 
+  post: any;
 
-  constructor(public navCtrl: NavController) {
-    
-    console.log(this.getName());
+
+  constructor(public navCtrl: NavController) {}
+
+  detailPost() {
+
+    this.navCtrl.push(DetalhePostPage.name, { 'detalhe': this.post });
+
   }
-  
-  detailPost(){
-    
-    this.navCtrl.push(DetalhePostPage.name, {'detalhe':this.post});
-    console.log(this.post.mensagem + "post");
-  }
-  getName():string{
-    return this.post;
-  }
+
 
 }

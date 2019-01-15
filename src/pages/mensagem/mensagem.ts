@@ -31,8 +31,8 @@ export class MensagemPage {
   }
 
   getMensagem(){
-    let detalhes = this.navParams.get('mensagem');
-    this.mensagem = detalhes;
+    this.mensagem = this.navParams.get('mensagem');
+   
    }
 
    

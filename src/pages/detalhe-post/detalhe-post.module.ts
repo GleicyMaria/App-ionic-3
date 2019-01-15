@@ -10,4 +10,4 @@ import { DetalhePostPage } from './detalhe-post';
     IonicPageModule.forChild(DetalhePostPage),
   ],
 })
-export class DetalhePostPageModule {}
+export class DetalhePostPageModule { }
