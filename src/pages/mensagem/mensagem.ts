@@ -16,11 +16,11 @@ import { MensagemProvider } from '../../providers/mensagem/mensagem';
 })
 export class MensagemPage {
     
-  mensagem:any;
+  mensagem:any = this.navParams.get('mensagem');;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams) {
-      this.getMensagem();
+      
   }
 
   ionViewDidLoad() {
@@ -30,10 +30,7 @@ export class MensagemPage {
 
   }
 
-  getMensagem(){
-    this.mensagem = this.navParams.get('mensagem');
-   
-   }
+ 
 
    
 }

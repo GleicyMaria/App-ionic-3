@@ -18,8 +18,7 @@ export class PostComponent {
   @Input()
   post: any;
 
-
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController) { }
 
   detailPost() {
 

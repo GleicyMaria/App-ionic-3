@@ -18,12 +18,6 @@ import { UserProvider } from '../../providers/user/user';
 })
 export class LoginPage {
 
-
-
-
-
-
-
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private userProvider: UserProvider,

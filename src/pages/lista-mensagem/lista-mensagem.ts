@@ -18,7 +18,7 @@ import { MensagemProvider } from '../../providers/mensagem/mensagem';
 
 export class ListaMensagemPage {
   private listMensagens: any = new Array();
-  
+  private id:number = this.navParams.get('id');
 
      
   constructor(public navCtrl: NavController, 
@@ -28,10 +28,11 @@ export class ListaMensagemPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaMensagemPage');
-  
-    this.mensagemPrivider.getMensagens().subscribe(
     
+    this.mensagemPrivider.getMensagens(this.id).subscribe(
+     
       (data)=>{
+        console.log(this.id)
         console.log(data)
         this.listMensagens = data
       }, error =>{
@@ -43,6 +44,7 @@ export class ListaMensagemPage {
 
 
   detailsMessage(mensagem){
+    
     this.navCtrl.push(MensagemPage.name,{'mensagem': mensagem});
   }
 

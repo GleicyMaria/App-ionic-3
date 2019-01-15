@@ -13,15 +13,14 @@ import { PostProvider } from '../../providers/post/post';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  user: any;
+  user: any = this.navParams.get('dados');;
   postDestaque: any;
 
 
   constructor(public navCtrl: NavController,
     private postPrivider: PostProvider,
     public navParams: NavParams) {
-    this.getDados()
-
+    
   }
 
   ionViewDidLoad() {
@@ -40,11 +39,6 @@ export class HomePage {
 
     )
 
-  }
-
-  getDados() {
-    this.user  = this.navParams.get('dados');
-    
   }
 
   logout() {
