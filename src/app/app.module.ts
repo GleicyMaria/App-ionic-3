@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import {IonicStorageModule} from '@ionic/storage'
 
 import { MyApp } from './app.component';
 
@@ -12,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPageModule } from '../pages/login/login.module';
 import { MensagemProvider } from '../providers/mensagem/mensagem';
 import { UserProvider } from '../providers/user/user';
+import { Session } from '../providers/session/session';
 
 
 
@@ -22,16 +24,15 @@ import { UserProvider } from '../providers/user/user';
     MyApp,
     
     
-   
-    
-    
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     ComponentsModule,
     HttpClientModule,
-    LoginPageModule
+    LoginPageModule,
+    
     
   ],
   bootstrap: [IonicApp],
@@ -47,7 +48,8 @@ import { UserProvider } from '../providers/user/user';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PostProvider,
     MensagemProvider,
-    UserProvider
+    UserProvider,
+    Session
   ]
 })
 export class AppModule {}

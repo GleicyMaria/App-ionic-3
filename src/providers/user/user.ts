@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import cyphrd from 'cyphrd';
+import hasha from 'hasha';  
+ 
 
 
 
@@ -17,8 +18,7 @@ export class UserProvider {
 
   login(user: string, password) {
     console.log("login");
-    var h = cyphrd.sha256(password)
-    var hash = h.b64()
+    let hash = hasha(password,{algorithm:'sha256',encoding:'base64'})
     console.log(hash);
     return new Promise((resolve, reject) => {
       var data = {
