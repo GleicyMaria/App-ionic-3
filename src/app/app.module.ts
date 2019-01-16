@@ -12,7 +12,7 @@ import { ListaMensagemPageModule } from '../pages/lista-mensagem/lista-mensagem.
 
 import { MensagemPageModule } from '../pages/mensagem/mensagem.module';
 import { AlterarFotoPageModule } from '../pages/alterar-foto/alterar-foto.module';
-
+import {ScreenOrientation} from '@ionic-native/screen-orientation'
 import { PostComponent } from '../components/post/post';
 import { ListaPostPage } from '../pages/lista-post/lista-post';
 
@@ -52,6 +52,7 @@ import { ListaPostPage } from '../pages/lista-post/lista-post';
   providers: [
     StatusBar,
     SplashScreen,
+    ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

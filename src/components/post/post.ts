@@ -25,13 +25,10 @@ export class PostComponent {
   }
   
 
-  constructor(public navCtrl: NavController) {
-    
-    
-  }
+  constructor(public navCtrl: NavController) { }
   
   detailPost(){
-    
+  
     this.navCtrl.push(DetalhePostPage, {'detalhe':this.objeto_postDestaque});
   }
 
