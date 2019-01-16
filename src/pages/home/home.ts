@@ -14,25 +14,25 @@ import { Session } from '../../providers/session/session';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  user: any ;
+  user: any;
   postDestaque: any;
   usuarioLogado
 
   constructor(public navCtrl: NavController,
     private postPrivider: PostProvider,
     public navParams: NavParams,
-    public session:Session) {
-    
+    public session: Session) {
+
   }
 
   ngOnInit() {
     this.session.get().then(res => {
-            this.user = (res);
-            console.log('usuário logado  >>> ',this.usuarioLogado);
-        });
+      this.user = (res);
+      console.log('usuário logado: ', this.user);
+    });
 
-        console.log(this.session.exist());
-      }
+    console.log(this.session.exist());
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaPostPage');
@@ -41,9 +41,7 @@ export class HomePage {
 
       (data) => {
         console.log(data)
-        console.log(this.session.get())
         this.postDestaque = data;
-        console.log(this.session.exist());
       }, error => {
         console.log(error);
       }
@@ -60,7 +58,7 @@ export class HomePage {
   }
 
   listMessage() {
-    
+
     this.navCtrl.push(ListaMensagemPage.name, { 'id': this.user.id });
   }
 

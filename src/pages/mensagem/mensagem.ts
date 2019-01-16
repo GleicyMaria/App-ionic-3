@@ -17,6 +17,7 @@ import { MensagemProvider } from '../../providers/mensagem/mensagem';
 export class MensagemPage {
     
   mensagem:any = this.navParams.get('mensagem');;
+  
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams) {

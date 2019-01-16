@@ -24,6 +24,7 @@ import { Session } from '../providers/session/session';
     MyApp,
     
     
+    
   ],
   imports: [
     BrowserModule,
