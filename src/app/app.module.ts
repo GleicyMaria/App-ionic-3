@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -14,11 +14,11 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { MensagemProvider } from '../providers/mensagem/mensagem';
 import { UserProvider } from '../providers/user/user';
 import { Session } from '../providers/session/session';
+import { DatePipe } from '@angular/common';
+import  localeptBr from '@angular/common/locales/pt';
+import {registerLocaleData } from '@angular/common';
 
-
-
-
-
+registerLocaleData(localeptBr);
 @NgModule({
   declarations: [
     MyApp,
@@ -47,10 +47,13 @@ import { Session } from '../providers/session/session';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide:LOCALE_ID, useValue:'pt-BR'},
     PostProvider,
     MensagemProvider,
     UserProvider,
-    Session
+    Session,
+    DatePipe
+    
   ]
 })
 export class AppModule {}

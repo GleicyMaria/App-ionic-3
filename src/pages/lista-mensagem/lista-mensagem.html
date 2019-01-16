@@ -15,14 +15,17 @@
 
 <ion-content padding>
     
-  
-    <ion-card>
-          <ion-list>
+     
+    <ion-card >
+    <ion-list>
       <ion-item *ngFor="let mensagem of array"  (click)="detailsMessage(mensagem)" >
         <p>{{mensagem}}</p>
       </ion-item>
- 
-     
+       
+      <ion-item *ngIf="!array?.length">
+        <p>Nenhuma mensagem encontrada</p>
+      </ion-item>
+      
 
     </ion-list>
   </ion-card>

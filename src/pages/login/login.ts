@@ -29,7 +29,7 @@ export class LoginPage {
 
       }).catch((error: any) => {
         this.showAlert(error.error.erro.codigo, error.error.erro.mensagem)
-        console.log("erro" + error.error.erro.codigo)
+        
       })
 
   }

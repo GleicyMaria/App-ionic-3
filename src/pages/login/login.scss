@@ -2,9 +2,9 @@ page-login {
     $margin: 70px auto;
     $sizeFontCheck: 12px;
     $sizeImg:100px;
-    $loginColor:     #FF8C00; 
+    $loginColor:     #FDA232; 
     $textLembraColor: #808080;
-
+    $inputColor:#D1E1FF;
 
    border-bottom:0;
 
@@ -19,6 +19,10 @@ page-login {
     font-size: $sizeFontCheck;
     
  }
+
+ ion-input.input.input{
+    background-color: $inputColor;
+}  
 
   #lbl-0, #lbl-1{
    font-weight: bold;

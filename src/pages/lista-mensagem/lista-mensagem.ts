@@ -22,7 +22,7 @@ export class ListaMensagemPage {
   private id:number ;
   
   
-  public array:any; 
+  public array:Array<any>; 
   public termo:string = '';
   public controleBusca: FormControl;
   
@@ -69,12 +69,10 @@ export class ListaMensagemPage {
   
     setFiltraMensagens(){
        this.array = this.filtro(this.termo);
-       console.log(this.array);
-      
-       console.log(this.listMensagens)
-    }
+           }
    
    filtro(busca){
+      
        return this.listMensagens.filter((mensagem)=>{
        return mensagem.toLowerCase().indexOf(busca.toLowerCase()) > -1;
        })
