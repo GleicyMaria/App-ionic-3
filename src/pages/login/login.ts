@@ -37,27 +37,6 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
  
-  onChangeTime(username,password){
-    if(this.lenghtUser(username)  && this.lenght(password)){
-      console.log("aqui")
-    }
-
-  }
  
-  lenghtUser(username) {
-    if(username.lenght >=3 ){
-      return true;
-    }else{
-      return false
-    }
-  } 
-
-  lenght(password) {
-    if(password.lenght >=4 ){
-      return true;
-    }else{
-      return false
-    }
-  } 
 
 }
