@@ -9,26 +9,30 @@
 </ion-header>
 
 <ion-content padding>
-  <img src="./assets/imgs/network.png" alt="">
-  <ion-list>
-    <ion-item>
-      <ion-label stacked>Username</ion-label>
-      <ion-input type="text" #user></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input type="password" #password></ion-input>
-    </ion-item>
+     <img src="./assets/imgs/network.png" alt="">
 
-  </ion-list>
+     
+    <ion-list >
+        <ion-item>
+          <ion-label stacked>Username</ion-label>
+          <ion-input  #username name="username"  type="text" minlength="3" maxlength="20" [(ngModel)]="dados.username"></ion-input>
+        </ion-item>
+      
+        <ion-item  >
+          <ion-label stacked>Password</ion-label>
+          <ion-input style="-webkit-text-security:disc;"  #password name="password" type="number" minlength="4" maxlength="10" [(ngModel)]="dados.password"  ></ion-input>
+        </ion-item>
+                  
+      </ion-list>
+    
+      <ion-item class="check">
+        <ion-checkbox  color="dark"></ion-checkbox>
+        <ion-label >Lembrar</ion-label>
+      </ion-item>
+        
+       <button ion-button float-right round (click)="login(username.value,password.value)" [disabled]="dados.username.length < 3 || dados.password.length < 4">Login</button>
+     
 
-  <ion-item class="check">
-    <ion-checkbox color="dark"></ion-checkbox>
-    <ion-label>Lembrar</ion-label>
-  </ion-item>
-
-  <button ion-button float-right round (click)="login(user.value,password.value)">Login</button>
-
-
+       
 </ion-content>

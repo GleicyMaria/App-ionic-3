@@ -12,7 +12,10 @@ import { Session } from '../../providers/session/session';
 })
 export class LoginPage {
    
-  
+  dados={
+    username:'',
+    password:''
+  };
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private userProvider: UserProvider,
@@ -24,6 +27,7 @@ export class LoginPage {
 
     this.userProvider.login(user, password)
       .then((result: any) => {
+        
         this.criarSession(result);
         this.navCtrl.setRoot(HomePage.name);
 
@@ -31,10 +35,9 @@ export class LoginPage {
         this.showAlert(error.error.erro.codigo, error.error.erro.mensagem)
         
       })
+    }
 
-  }
-
-  showAlert(codigo, mensagem) {
+   showAlert(codigo, mensagem) {
     const alert = this.alertCtrl.create({
       title: 'Login Invalido',
       subTitle: 'Erro ' + codigo + ' ' + mensagem,
@@ -46,8 +49,8 @@ export class LoginPage {
   criarSession(user){
     this.session.create(user);
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+  
+ 
+
 
 }

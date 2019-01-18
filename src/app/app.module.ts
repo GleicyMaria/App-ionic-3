@@ -17,7 +17,7 @@ import { Session } from '../providers/session/session';
 import { DatePipe } from '@angular/common';
 import  localeptBr from '@angular/common/locales/pt';
 import {registerLocaleData } from '@angular/common';
-
+import {ScreenOrientation} from '@ionic-native/screen-orientation';
 registerLocaleData(localeptBr);
 @NgModule({
   declarations: [
@@ -52,8 +52,9 @@ registerLocaleData(localeptBr);
     MensagemProvider,
     UserProvider,
     Session,
-    DatePipe
-    
+    DatePipe,
+    ScreenOrientation,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

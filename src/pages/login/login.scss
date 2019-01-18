@@ -19,6 +19,9 @@ page-login {
     font-size: $sizeFontCheck;
     
  }
+ ion-input.input.input{
+   background-color: $inputColor;
+}
 
  ion-input.input.input{
     background-color: $inputColor;
