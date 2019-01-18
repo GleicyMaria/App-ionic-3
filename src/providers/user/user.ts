@@ -19,6 +19,7 @@ export class UserProvider {
   login(user: string, password) {
     console.log("login");
     let hash = hasha(password,{algorithm:'sha256',encoding:'base64'})
+   
     console.log(hash);
     return new Promise((resolve, reject) => {
       var data = {
