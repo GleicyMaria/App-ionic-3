@@ -3,13 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { HomePage } from '../home/home';
 
 import { UserProvider } from '../../providers/user/user';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation
- */
+import { Session } from '../../providers/session/session';
 
 @IonicPage()
 @Component({
@@ -17,34 +11,33 @@ import { UserProvider } from '../../providers/user/user';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-
-
-
-
-
-
+   
+  dados={
+    username:'',
+    password:''
+  };
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private userProvider: UserProvider,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public session:Session
   ) { }
 
-  login(user: string, password) {
+  login() {
 
-    this.userProvider.login(user, password)
+    this.userProvider.login(this.dados.username, this.dados.password)
       .then((result: any) => {
-
-        this.navCtrl.setRoot(HomePage.name, { 'dados': result });
+        
+        this.criarSession(result);
+        this.navCtrl.setRoot(HomePage.name);
 
       }).catch((error: any) => {
         this.showAlert(error.error.erro.codigo, error.error.erro.mensagem)
-        console.log("erro" + error.error.erro.codigo)
+        
       })
+    }
 
-  }
-
-  showAlert(codigo, mensagem) {
+   showAlert(codigo, mensagem) {
     const alert = this.alertCtrl.create({
       title: 'Login Invalido',
       subTitle: 'Erro ' + codigo + ' ' + mensagem,
@@ -52,8 +45,12 @@ export class LoginPage {
     });
     alert.present();
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+   
+  criarSession(user){
+    this.session.create(user);
   }
+  
+ 
+
 
 }

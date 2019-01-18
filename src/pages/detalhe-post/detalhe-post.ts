@@ -15,23 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetalhePostPage {
 
-
-  detalhePost: any;
-
-
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
-    this.getDetalhes();
-  }
+  detalhePost: any= this.navParams.get('detalhe');
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-
+    
   }
 
-  getDetalhes() {
-    this.detalhePost= this.navParams.get('detalhe');
-     
-  }
+  
 
 }

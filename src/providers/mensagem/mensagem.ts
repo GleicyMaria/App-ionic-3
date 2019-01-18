@@ -13,6 +13,7 @@ export class MensagemProvider {
   
   constructor(public http: HttpClient) {
     console.log('Hello MensagemProvider Provider');
+    
   }
 
   getMensagens(idUser){

@@ -9,21 +9,23 @@
   <ion-navbar>
     <ion-title>Mensagens </ion-title>
   </ion-navbar>
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar [(ngModel)]="termo" [formControl]="controleBusca" (ionInput)="onSearchInput"></ion-searchbar>
 </ion-header>
 
 
 <ion-content padding>
-
-  <ion-card>
-
+    
+     
+    <ion-card >
     <ion-list>
-      <ion-item *ngFor="let mensagem of listMensagens"  (click)="detailsMessage(mensagem)" >
+      <ion-item *ngFor="let mensagem of array"  (click)="detailsMessage(mensagem)" >
         <p>{{mensagem}}</p>
       </ion-item>
-
+       
+      <ion-item *ngIf="!array?.length">
+        <p>Nenhuma mensagem encontrada</p>
+      </ion-item>
       
-     
 
     </ion-list>
   </ion-card>
