@@ -16,7 +16,8 @@ import { Session } from '../../providers/session/session';
 export class HomePage {
   user: any;
   postDestaque: any;
-  usuarioLogado
+  usuarioLogado;
+  public iniciais;
 
   constructor(public navCtrl: NavController,
     private postPrivider: PostProvider,
@@ -29,6 +30,8 @@ export class HomePage {
     this.session.get().then(res => {
       this.user = (res);
       console.log('usuário logado: ', this.user);
+      console.log(this.user.nome)
+      this.getIniciais()
     });
 
     console.log(this.session.exist());
@@ -49,6 +52,17 @@ export class HomePage {
 
     )
 
+  }
+
+  getIniciais() {
+
+    let res = this.user.nome.split(" ")
+    let nome = res[0].charAt(0)
+    let sobrenome = res[res.length - 1].charAt(0)
+    this.iniciais = nome + sobrenome
+    console.log("aqui" + res)
+    console.log(nome)
+    console.log(this.iniciais)
   }
 
   logout() {

@@ -29,7 +29,7 @@ export class LoginPage {
       .then((result: any) => {
         
         this.criarSession(result);
-        this.navCtrl.setRoot(HomePage.name);
+        this.navCtrl.setRoot(HomePage.name,{'id':result.id});
 
       }).catch((error: any) => {
         this.showAlert(error.error.erro.codigo, error.error.erro.mensagem)

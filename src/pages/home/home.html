@@ -17,11 +17,17 @@
 
     <ion-item>
         <ion-avatar item-start (click)="changePhoto()">
-            <img src="./assets/imgs/icon.png">
+           
+            <ion-fab top left >
+            <button ion-fab>{{iniciais}}</button>
+            </ion-fab>
+         
+          <!--  <img src="./assets/imgs/icon.png">-->
         </ion-avatar>
         <div *ngIf="user != null">
             <h2>{{user.nome}}</h2>
             <p>{{user.login}} </p>
+            
         </div>
     </ion-item>
 
@@ -40,6 +46,7 @@
         <ion-icon name="mail"></ion-icon>
         <p>Mensagens</p>
     </button>
-
+  
+   
 
 </ion-content>

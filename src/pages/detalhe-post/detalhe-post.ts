@@ -17,10 +17,12 @@ export class DetalhePostPage {
 
   detalhePost: any= this.navParams.get('detalhe');
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
+  }
 
   ionViewDidLoad() {
-    
+    this.detalhePost.data = this.navParams.get('data'); 
   }
 
   

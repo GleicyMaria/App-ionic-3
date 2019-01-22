@@ -3,6 +3,15 @@ page-home {
     $marginMensagem: 20px auto;
     $tamanhoAvatar:100px;
     
+    .item ion-avatar[item-left],
+    .item ion-thumbnail[item-left],
+    .item ion-avatar[item-start],
+    .item ion-thumbnail[item-start] {
+      margin: 8px 16px 31px 0;
+    }
+    .fab .button-inner {
+        font-size: 27px;
+    }
     .button-full {
         top: $distancia_top;
     }

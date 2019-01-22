@@ -10,6 +10,7 @@ export class PostComponent {
   @Input()
   public post: any;
   public data:any;
+  public dataHora:any;
   
   constructor(public navCtrl: NavController, private dataPipe:DatePipe) {
      this.dataPipe = new DatePipe('pt-BR') 
@@ -23,16 +24,15 @@ export class PostComponent {
   
   detailPost() {
     
-    this.navCtrl.push(DetalhePostPage.name, { 'detalhe': this.post });
+    this.navCtrl.push(DetalhePostPage.name, { 'detalhe': this.post  , 'data':this.dataHora});
 
   }
 
   mudarData(){
-    
-    this.data = this.dataPipe.transform(this.post.data, 'short',)
-    this.post.data = this.data;
+    this.data = this.dataPipe.transform(this.post.data, 'dd/MM/yyy')
+    this.dataHora = this.dataPipe.transform(this.post.data, 'short')
     console.log(this.data);
-    console.log(this.post.data);
+    console.log(this.dataHora);
         
       
      

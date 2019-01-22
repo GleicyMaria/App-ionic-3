@@ -13,4 +13,6 @@ import { ComponentsModule } from '../../components/components.module';
   ],
 
 })
-export class HomePageModule { }
+export class HomePageModule{ 
+  
+}

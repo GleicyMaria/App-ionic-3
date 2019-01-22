@@ -18,6 +18,7 @@ import { DatePipe } from '@angular/common';
 import  localeptBr from '@angular/common/locales/pt';
 import {registerLocaleData } from '@angular/common';
 import {ScreenOrientation} from '@ionic-native/screen-orientation';
+import { Camera } from '@ionic-native/camera';
 registerLocaleData(localeptBr);
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ registerLocaleData(localeptBr);
     UserProvider,
     Session,
     DatePipe,
+    Camera,
     ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

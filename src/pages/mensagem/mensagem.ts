@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { MensagemProvider } from '../../providers/mensagem/mensagem';
 
 /**
  * Generated class for the MensagemPage page.
