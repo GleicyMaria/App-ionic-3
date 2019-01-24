@@ -1,7 +1,7 @@
 page-home {
     $distancia_top:20px;
     $marginMensagem: 20px auto;
-    $tamanhoAvatar:100px;
+    $tamanhoAvatar:50px;
     
     .item ion-avatar[item-left],
     .item ion-thumbnail[item-left],
@@ -27,6 +27,7 @@ page-home {
     .item ion-avatar img {
         width: $tamanhoAvatar;
         height: $tamanhoAvatar;
+        border-radius: 50%
       }
 
       .bar-buttons {

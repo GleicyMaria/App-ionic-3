@@ -27,7 +27,7 @@ export class LoginPage {
 
     this.userProvider.login(this.dados.username, this.dados.password)
       .then((result: any) => {
-        
+           
         this.criarSession(result);
         this.navCtrl.setRoot(HomePage.name,{'id':result.id});
 

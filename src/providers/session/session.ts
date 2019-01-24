@@ -17,6 +17,12 @@ export class Session {
     return this.storage.get('user');
   }
 
+  setPhoto(id,photo){
+    return this.storage.set(id,photo);
+  }
+  getPhoto(id){
+  return this.storage.get(String(id));
+  }
   remove(){
     this.storage.remove('user');
   }
