@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class MensagemProvider {
-  private url = "http://aulas.getsandbox.com/msgs/"
+  private url = "http://aulas2.getsandbox.com/msgs/"
   
   constructor(public http: HttpClient) {
     console.log('Hello MensagemProvider Provider');

@@ -6,7 +6,7 @@ import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
 import { ListaPostPage } from '../lista-post/lista-post';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
 import { PostProvider } from '../../providers/post/post';
-import { Session } from '../../providers/session/session';
+
 
 @IonicPage()
 @Component({
@@ -14,7 +14,7 @@ import { Session } from '../../providers/session/session';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  user: any;
+  user:any = this.navParams.get('user');
   postDestaque: any;
   usuarioLogado;
   public iniciais;
@@ -22,19 +22,15 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     private postPrivider: PostProvider,
     public navParams: NavParams,
-    public session: Session) {
+    ) {
 
   }
 
   ngOnInit() {
-    this.session.get().then(res => {
-      this.user = (res);
-      console.log('usuário logado: ', this.user);
-      console.log(this.user.nome)
-      this.getIniciais()
-    });
 
-    console.log(this.session.exist());
+        this.getIniciais()
+  
+        
   }
 
   ionViewDidLoad() {
@@ -66,9 +62,9 @@ export class HomePage {
   }
 
   logout() {
-    this.session.remove();
+    
     this.navCtrl.setRoot(LoginPage.name);
-    console.log(this.session.exist());
+    
   }
 
   listMessage() {

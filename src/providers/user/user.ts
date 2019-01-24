@@ -8,7 +8,7 @@ import hasha from 'hasha';
 @Injectable()
 export class UserProvider {
 
-  private url = 'http://aulas.getsandbox.com/login'
+  private url = 'http://aulas2.getsandbox.com/login'
 
 
   constructor(public http: HttpClient) {

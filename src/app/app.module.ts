@@ -13,7 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPageModule } from '../pages/login/login.module';
 import { MensagemProvider } from '../providers/mensagem/mensagem';
 import { UserProvider } from '../providers/user/user';
-import { Session } from '../providers/session/session';
 import { DatePipe } from '@angular/common';
 import  localeptBr from '@angular/common/locales/pt';
 import {registerLocaleData } from '@angular/common';
@@ -52,7 +51,6 @@ registerLocaleData(localeptBr);
     PostProvider,
     MensagemProvider,
     UserProvider,
-    Session,
     DatePipe,
     Camera,
     ScreenOrientation,
