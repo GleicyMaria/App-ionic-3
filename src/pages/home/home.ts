@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, NavParams, AlertController } from 'ionic-angular';
+import { NavController, IonicPage, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
 import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
@@ -17,12 +17,14 @@ export class HomePage {
   user: any = this.navParams.get('user');
   postDestaque: any;
   usuarioLogado;
+  private load
   public iniciais;
 
   constructor(public navCtrl: NavController,
     private postPrivider: PostProvider,
     public navParams: NavParams,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController
   ) {
 
   }
@@ -33,13 +35,13 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaPostPage');
-
-    this.postPrivider.getLetPost().subscribe(
-
-      (data) => {
+    this.loading();
+    this.postPrivider.getLetPost().subscribe((data) => {
         console.log(data)
         this.postDestaque = data;
+        this.closeLoading();
       }, error => {
+        this.closeLoading();
         this.showAlert(error.message)
         
       }
@@ -103,5 +105,14 @@ export class HomePage {
     conf.present();
   }
  
-
+  loading() {
+    
+    this.load = this.loadingCtrl.create({
+      content: "Carregando..."
+    });
+    this.load.present();
+  }
+  closeLoading() {
+    this.load.dismiss();
+  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { PostProvider } from '../../providers/post/post';
 
 
@@ -12,24 +12,26 @@ import { PostProvider } from '../../providers/post/post';
 export class ListaPostPage {
 
   public listPosts:any = new Array();
-
+  load;
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
      private postPrivider:PostProvider,
-     public alertCtrl: AlertController) {
+     public alertCtrl: AlertController, 
+     public loadingCtrl:LoadingController) {
        
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaPostPage');
-    
+     this.loading();
     this.postPrivider.getPosts().subscribe(
-    
+      
       (data) =>{
         console.log(data)
         this.listPosts = data;
-       
+        this.closeLoading();
       }, error =>{
+        this.closeLoading();
         this.showAlert(error.message);
       }
     )
@@ -48,6 +50,17 @@ export class ListaPostPage {
 
   }
    
+  loading() {
+    
+    
+    this.load = this.loadingCtrl.create({
+      content: "Carregando posts..."
+    });
+    this.load.present();
+  }
+  closeLoading() {
+    this.load.dismiss();
+  }
   
 
 }
