@@ -16,8 +16,8 @@ export class MensagemProvider {
     
   }
 
-  getMensagens(idUser){
-    return this.http.get(this.url+ idUser);
+  getMensagens(id){
+    return this.http.get(this.url+ id);
   }
 
 }

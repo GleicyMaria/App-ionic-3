@@ -18,6 +18,7 @@
      
     <ion-card >
     <ion-list>
+      <div *ngIf="array != null">
       <ion-item *ngFor="let mensagem of array"  (click)="detailsMessage(mensagem)" >
         <p>{{mensagem}}</p>
       </ion-item>
@@ -25,7 +26,7 @@
       <ion-item *ngIf="!array?.length">
         <p>Nenhuma mensagem encontrada</p>
       </ion-item>
-      
+    </div>
 
     </ion-list>
   </ion-card>

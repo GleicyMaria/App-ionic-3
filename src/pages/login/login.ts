@@ -28,15 +28,32 @@ export class LoginPage {
           this.navCtrl.setRoot(HomePage.name,{'user':result});
 
       }).catch((error: any) => {
-        this.showAlert(error.error.erro.codigo, error.error.erro.mensagem)
+        if(error.message){
+          this.alert(error.message);
+        }else{
+          this.showAlert(error.error.erro.codigo, error.error.erro.mensagem)
+        }
+       
         
       })
     }
 
+
+    alert(mensagem) {
+      const alert = this.alertCtrl.create({
+        title: 'Login Invalido',
+        subTitle: 'Erro: ' + mensagem,
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+
+
+
    showAlert(codigo, mensagem) {
     const alert = this.alertCtrl.create({
       title: 'Login Invalido',
-      subTitle: 'Erro ' + codigo + ' ' + mensagem,
+      subTitle: 'Erro: ' + codigo + ' ' + mensagem,
       buttons: ['OK']
     });
     alert.present();

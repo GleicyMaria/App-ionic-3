@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { MensagemPage } from '../mensagem/mensagem';
 import { MensagemProvider } from '../../providers/mensagem/mensagem';
 import { FormControl } from '@angular/forms';
@@ -28,7 +28,8 @@ export class ListaMensagemPage {
   
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    private mensagemPrivider:MensagemProvider) {
+    private mensagemPrivider:MensagemProvider,
+    public alertCtrl: AlertController) {
       this.controleBusca = new FormControl;
       this.get();
   }
@@ -44,17 +45,21 @@ export class ListaMensagemPage {
     this.mensagemPrivider.getMensagens(this.id).subscribe(
      
       (data)=>{
+        if(!data.erro){
         this.listMensagens = data;
         this.array = this.listMensagens;
+        }else(
+          this.alert(data.erro.codigo, data.erro.mensagem)
+        )
+        
         console.log(this.array)
-      }, error =>{
-        console.log(error);
+      }, erro =>{
+        this.showAlert(erro.message);
       }
     )
   
   }
-
-  
+   
 
   detailsMessage(mensagem){
     
@@ -77,4 +82,25 @@ export class ListaMensagemPage {
        return mensagem.toLowerCase().indexOf(busca.toLowerCase()) > -1;
        })
    }
+
+
+   alert ( codigo, mensagem) {
+    const alert = this.alertCtrl.create({
+      title: 'Erro na Lista de Mensagem',
+      subTitle: 'Erro '+ codigo + ' ' +  mensagem,
+      buttons: ['OK']
+    });
+    alert.present();
+
+  }
+
+   showAlert ( mensagem) {
+    const alert = this.alertCtrl.create({
+      title: 'Erro na Lista de Mensagem',
+      subTitle: 'Erro ' +  mensagem,
+      buttons: ['OK']
+    });
+    alert.present();
+
+  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { PostProvider } from '../../providers/post/post';
 
 
@@ -15,7 +15,8 @@ export class ListaPostPage {
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
-     private postPrivider:PostProvider) {
+     private postPrivider:PostProvider,
+     public alertCtrl: AlertController) {
        
   }
 
@@ -29,13 +30,23 @@ export class ListaPostPage {
         this.listPosts = data;
        
       }, error =>{
-        console.log(error);
+        this.showAlert(error.message);
       }
     )
+
+    
     
   }
 
-  
+  showAlert (mensagem) {
+    const alert = this.alertCtrl.create({
+      title: 'Erro na Lista de Post',
+      subTitle: 'Erro '  + mensagem,
+      buttons: ['OK']
+    });
+    alert.present();
+
+  }
    
   
 

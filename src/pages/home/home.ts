@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, NavParams } from 'ionic-angular';
+import { NavController, IonicPage, NavParams, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
 import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
@@ -14,7 +14,7 @@ import { PostProvider } from '../../providers/post/post';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  user:any = this.navParams.get('user');
+  user: any = this.navParams.get('user');
   postDestaque: any;
   usuarioLogado;
   public iniciais;
@@ -22,15 +22,13 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     private postPrivider: PostProvider,
     public navParams: NavParams,
-    ) {
+    public alertCtrl: AlertController
+  ) {
 
   }
 
   ngOnInit() {
-
-        this.getIniciais()
-  
-        
+    this.getIniciais()
   }
 
   ionViewDidLoad() {
@@ -42,7 +40,8 @@ export class HomePage {
         console.log(data)
         this.postDestaque = data;
       }, error => {
-        console.log(error);
+        this.showAlert(error.message)
+        
       }
 
 
@@ -51,7 +50,6 @@ export class HomePage {
   }
 
   getIniciais() {
-
     let res = this.user.nome.split(" ")
     let nome = res[0].charAt(0)
     let sobrenome = res[res.length - 1].charAt(0)
@@ -62,9 +60,8 @@ export class HomePage {
   }
 
   logout() {
-    
-    this.navCtrl.setRoot(LoginPage.name);
-    
+   
+    this.confirmarLogout();
   }
 
   listMessage() {
@@ -80,6 +77,31 @@ export class HomePage {
     this.navCtrl.push(AlterarFotoPage.name)
   }
 
-
+  showAlert(mensagem) {
+    const alert = this.alertCtrl.create({
+      title: 'Falha no Ultimo Post',
+      subTitle: 'Erro ' + mensagem,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  
+  confirmarLogout(){
+    const conf = this.alertCtrl.create({
+      title:'Logout',
+      subTitle:' Deseja realmente fazer o logout?',
+      buttons:[{
+        text:'Não'
+      },{
+        text:'Sim',
+        handler: ()=>{
+          this.navCtrl.setRoot(LoginPage.name)
+        }
+       
+      }]
+    })
+    conf.present();
+  }
+ 
 
 }
