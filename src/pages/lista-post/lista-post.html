@@ -14,9 +14,12 @@
 
 
 <ion-content padding>
-    <div *ngIf ="listPosts.length != null">
+    <div *ngIf ="listPosts != null">
     <post *ngFor="let post of listPosts" [post]="post"> </post>
-    
-    
-  </div>
+    </div>
+    <div *ngIf ="listPosts == null">
+      <ion-card>
+          <h2>Não há post para serem exibidos</h2>
+      </ion-card>
+     </div>
 </ion-content>
