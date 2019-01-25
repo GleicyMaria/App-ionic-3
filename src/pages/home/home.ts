@@ -1,51 +1,118 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
 import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
 import { ListaPostPage } from '../lista-post/lista-post';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
+import { PostProvider } from '../../providers/post/post';
 
+
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public objeto_user ={
-    name:"Gleicy Maria",
-    username:"gleicymaria"
+  user: any = this.navParams.get('user');
+  postDestaque: any;
+  usuarioLogado;
+  private load
+  public iniciais;
+
+  constructor(public navCtrl: NavController,
+    private postPrivider: PostProvider,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController
+  ) {
 
   }
 
-  public objeto_postDestaque ={
-    titulo:"Lorem ipsum",
-    conteudo:"Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
-    data:"09/01/2019 15:21",
-    autor:"gleicymaria"
-    
-  }
-  
-  
-  constructor(public navCtrl: NavController) {
-
+  ngOnInit() {
+    this.getIniciais()
   }
 
-  logout(){
-    this.navCtrl.setRoot(LoginPage.name);
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ListaPostPage');
+    this.loading();
+    this.postPrivider.getLetPost().subscribe((data) => {
+        console.log(data)
+        this.postDestaque = data;
+        this.closeLoading();
+      }, error => {
+        this.closeLoading();
+        this.showAlert(error.message)
+        
+      }
+
+
+    )
+
   }
 
-  
-
-  listMessage(){
-    this.navCtrl.push(ListaMensagemPage.name);
+  getIniciais() {
+    let res = this.user.nome.split(" ")
+    let nome = res[0].charAt(0)
+    let sobrenome = res[res.length - 1].charAt(0)
+    this.iniciais = nome + sobrenome
+    console.log("aqui" + res)
+    console.log(nome)
+    console.log(this.iniciais)
   }
 
-  listPost(){
+  logout() {
+   
+    this.confirmarLogout();
+  }
+
+  listMessage() {
+
+    this.navCtrl.push(ListaMensagemPage.name, { 'id': this.user.id });
+  }
+
+  listPost() {
     this.navCtrl.push(ListaPostPage.name)
   }
-   
-  changePhoto(){
+
+  changePhoto() {
     this.navCtrl.push(AlterarFotoPage.name)
   }
+
+  showAlert(mensagem) {
+    const alert = this.alertCtrl.create({
+      title: 'Falha no Ultimo Post',
+      subTitle: 'Erro ' + mensagem,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  
+  confirmarLogout(){
+    const conf = this.alertCtrl.create({
+      title:'Logout',
+      subTitle:' Deseja realmente fazer o logout?',
+      buttons:[{
+        text:'Não'
+      },{
+        text:'Sim',
+        handler: ()=>{
+          this.navCtrl.setRoot(LoginPage.name)
+        }
+       
+      }]
+    })
+    conf.present();
+  }
  
+  loading() {
+    
+    this.load = this.loadingCtrl.create({
+      content: "Carregando..."
+    });
+    this.load.present();
+  }
+  closeLoading() {
+    this.load.dismiss();
+  }
 }

@@ -14,33 +14,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detalhe-post.html',
 })
 export class DetalhePostPage {
-  
-  
-  detalhePost = {
-  titulo:"",
-  autor:"",
-  conteudo:"",
-  data:"",
-  }
 
-
+  detalhePost: any= this.navParams.get('detalhe');
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-   
-    this.getDetalhes();
-  }
-
-  ionViewDidLoad() {
     
   }
 
-  getDetalhes(){
-   let detalhes = this.navParams.get('detalhe');
-   this.detalhePost.titulo = detalhes.titulo;
-   this.detalhePost.autor = detalhes.autor;
-   this.detalhePost.conteudo = detalhes.conteudo;
-   this.detalhePost.data = detalhes.data;
-   
+  ionViewDidLoad() {
+    this.detalhePost.data = this.navParams.get('data'); 
   }
+
+  
 
 }

@@ -1,37 +1,43 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DetalhePostPage } from '../../pages/detalhe-post/detalhe-post';
-
-
-/**
- * Generated class for the PostComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+import {DatePipe} from '@angular/common'
 @Component({
   selector: 'post',
   templateUrl: 'post.html'
 })
 export class PostComponent {
   @Input()
-  listPost:any;
-
-  public objeto_postDestaque ={
-    titulo:"Lorem ipsum",
-    conteudo:"Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
-    data:"09/01/2019 ",
-    autor:"gleicymaria"
-    
-  }
+  public post: any;
+  public data:any;
+  public dataHora:any;
   
-
-  constructor(public navCtrl: NavController) { }
-  
-  detailPost(){
-    
-    this.navCtrl.push(DetalhePostPage.name, {'detalhe':this.objeto_postDestaque});
-  
+  constructor(public navCtrl: NavController, private dataPipe:DatePipe) {
+     this.dataPipe = new DatePipe('pt-BR') 
   }
 
-}
+
+   ngOnInit() {
+     console.log("aqui")
+     this.mudarData();
+   }
+  
+  detailPost() {
+    
+    this.navCtrl.push(DetalhePostPage.name, { 'detalhe': this.post  , 'data':this.dataHora});
+
+  }
+
+  mudarData(){
+    this.data = this.dataPipe.transform(this.post.data, 'dd/MM/yyy')
+    this.dataHora = this.dataPipe.transform(this.post.data, 'short')
+    console.log(this.data);
+    console.log(this.dataHora);
+        
+      
+     
+    }
+  }
+
+
+

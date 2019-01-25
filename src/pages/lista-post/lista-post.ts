@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { PostProvider } from '../../providers/post/post';
 
-
-/**
- * Generated class for the ListaPostPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -18,20 +12,55 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ListaPostPage {
 
   public listPosts:any = new Array();
-
+  load;
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
-     ) {
+     private postPrivider:PostProvider,
+     public alertCtrl: AlertController, 
+     public loadingCtrl:LoadingController) {
        
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaPostPage');
+     this.loading();
+    this.postPrivider.getPosts().subscribe(
+      
+      (data) =>{
+        console.log(data)
+        this.listPosts = data;
+        this.closeLoading();
+      }, error =>{
+        this.closeLoading();
+        this.showAlert(error.message);
+      }
+    )
+
+    
     
   }
 
-  
+  showAlert (mensagem) {
+    const alert = this.alertCtrl.create({
+      title: 'Erro na Lista de Post',
+      subTitle: 'Erro '  + mensagem,
+      buttons: ['OK']
+    });
+    alert.present();
+
+  }
    
+  loading() {
+    
+    
+    this.load = this.loadingCtrl.create({
+      content: "Carregando posts..."
+    });
+    this.load.present();
+  }
+  closeLoading() {
+    this.load.dismiss();
+  }
   
 
 }

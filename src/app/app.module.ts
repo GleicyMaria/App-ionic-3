@@ -1,42 +1,46 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import {IonicStorageModule} from '@ionic/storage'
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 
 
 import { ComponentsModule } from '../components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginPageModule } from '../pages/login/login.module';
-import {ScreenOrientation} from '@ionic-native/screen-orientation'
-
-
-
-
+import { MensagemProvider } from '../providers/mensagem/mensagem';
+import { UserProvider } from '../providers/user/user';
+import {PostProvider} from '../providers/post/post'
+import { DatePipe } from '@angular/common';
+import  localeptBr from '@angular/common/locales/pt';
+import {registerLocaleData } from '@angular/common';
+import {ScreenOrientation} from '@ionic-native/screen-orientation';
+import { Camera } from '@ionic-native/camera';
+registerLocaleData(localeptBr);
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     
-   
     
     
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     ComponentsModule,
+    HttpClientModule,
     LoginPageModule,
-    HttpClientModule
+    
     
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    
     
 
   ],
@@ -44,6 +48,12 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation'
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide:LOCALE_ID, useValue:'pt-BR'},
+    PostProvider,
+    MensagemProvider,
+    UserProvider,
+    DatePipe,
+    Camera,
     ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

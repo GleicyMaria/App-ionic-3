@@ -10,4 +10,4 @@ import { AlterarFotoPage } from './alterar-foto';
     IonicPageModule.forChild(AlterarFotoPage),
   ],
 })
-export class AlterarFotoPageModule {}
+export class AlterarFotoPageModule { }

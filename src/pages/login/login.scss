@@ -5,6 +5,9 @@ page-login {
     $loginColor:     #FDA232; 
     $textLembraColor: #808080;
     $inputColor:#D1E1FF;
+
+   border-bottom:0;
+
  img{
     
     display:block; 
@@ -19,6 +22,10 @@ page-login {
  ion-input.input.input{
    background-color: $inputColor;
 }
+
+ ion-input.input.input{
+    background-color: $inputColor;
+}  
 
   #lbl-0, #lbl-1{
    font-weight: bold;

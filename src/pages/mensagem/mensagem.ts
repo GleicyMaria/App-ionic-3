@@ -14,12 +14,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'mensagem.html',
 })
 export class MensagemPage {
+    
+  mensagem:any = this.navParams.get('mensagem');;
+  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams) {
+      
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MensagemPage');
+   
+      
+
   }
 
+ 
+
+   
 }
