@@ -53,8 +53,8 @@ export class AlterarFotoPage {
   }
 
  fotoLogin(){
-  this.session.setPhoto(String(this.id),this.photo);
-  console.log(this.session.setPhoto(String(this.id),this.photo))
+  this.session.set(String(this.id),this.photo);
+  console.log(this.session.set(String(this.id),this.photo))
   console.log(this.photo)
   
   

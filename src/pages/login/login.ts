@@ -47,7 +47,7 @@ export class LoginPage {
   }
    
   criarSession(user){
-    this.session.create(user);
+    this.session.set('user',user);
   }
   
  

@@ -23,17 +23,11 @@ export class HomePage {
     private postPrivider: PostProvider,
     public navParams: NavParams,
     public session: Session,public events:Events,
-    private zone:NgZone ) {
-  
-      
-
-     
-
-  }
+    private zone:NgZone ) {}
 
 
   ngOnInit() {
-    this.session.get().then(res => {
+    this.session.get('user').then(res => {
       this.user = (res);
       console.log('usuário logado: ', this.user);
       console.log(this.user.nome)
@@ -41,7 +35,7 @@ export class HomePage {
       this.setFoto();
       console.log("foto" + this.photo)
     });
-    console.log(this.session.exist());
+    
   
     }
     
@@ -72,7 +66,7 @@ export class HomePage {
 
  
   setFoto(){
-    this.session.getPhoto(this.user.id).then(res =>{
+    this.session.get(this.user.id).then(res =>{
       this.photo = res;
       console.log(res);
       console.log("set foto");
@@ -94,9 +88,9 @@ export class HomePage {
   
 
   logout() {
-    this.session.remove();
+    this.session.remove('user');
     this.navCtrl.setRoot(LoginPage.name);
-    console.log(this.session.exist());
+   
   }
 
   listMessage() {
