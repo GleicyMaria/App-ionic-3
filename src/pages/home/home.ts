@@ -6,7 +6,8 @@ import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
 import { ListaPostPage } from '../lista-post/lista-post';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
 import { PostProvider } from '../../providers/post/post';
-
+import { Storage } from '@ionic/storage';
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -22,14 +23,22 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     private postPrivider: PostProvider,
     public navParams: NavParams,
+    public authProvider: AuthProvider
     ) {
 
+      
   }
+
+  
 
   ngOnInit() {
 
-        this.getIniciais()
-  
+    this.authProvider.getStorageUser().then((data) => { this.user = data});
+    console.log('usuaaaaario: '+this.user);
+    if (this.user != null){
+      this.getIniciais();
+    }    
+    
         
   }
 
@@ -41,6 +50,7 @@ export class HomePage {
       (data) => {
         console.log(data)
         this.postDestaque = data;
+        
       }, error => {
         console.log(error);
       }

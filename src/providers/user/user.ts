@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import hasha from 'hasha';  
- 
+
 
 
 
@@ -10,7 +10,8 @@ export class UserProvider {
 
   private url = 'http://aulas2.getsandbox.com/login'
 
-
+  
+  
   constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');
 
@@ -26,6 +27,7 @@ export class UserProvider {
         login: user,
         senha: hash
       };
+      
       this.postLogin(data).subscribe((result: any) => {
         resolve(result);
         console.log(data);
@@ -43,9 +45,6 @@ export class UserProvider {
     return this.http.post(this.url, data)
   }
 
-
-
-
-
-
+ 
+  
 }
