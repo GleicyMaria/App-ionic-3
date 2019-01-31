@@ -9,6 +9,7 @@ import { PostProvider } from '../../providers/post/post';
 import { Storage } from '@ionic/storage';
 import { AuthProvider } from '../../providers/auth/auth';
 
+
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -19,6 +20,7 @@ export class HomePage {
   postDestaque: any;
   usuarioLogado;
   public iniciais;
+  foto = null;
 
   constructor(public navCtrl: NavController,
     private postPrivider: PostProvider,
@@ -29,12 +31,10 @@ export class HomePage {
       
   }
 
-  
-
   ngOnInit() {
 
     this.authProvider.getStorageUser().then((data) => { this.user = data});
-    console.log('usuaaaaario: '+this.user);
+    
     if (this.user != null){
       this.getIniciais();
     }    
@@ -60,19 +60,29 @@ export class HomePage {
 
   }
 
+
   getIniciais() {
 
-    let res = this.user.nome.split(" ")
-    let nome = res[0].charAt(0)
-    let sobrenome = res[res.length - 1].charAt(0)
-    this.iniciais = nome + sobrenome
-    console.log("aqui" + res)
-    console.log(nome)
-    console.log(this.iniciais)
+    this.authProvider.getFoto().then((data)=>{this.foto = data});
+
+    if (this.foto != null){
+      this.iniciais = this.foto;
+    }else{
+      let res = this.user.nome.split(" ")
+      let nome = res[0].charAt(0)
+      let sobrenome = res[res.length - 1].charAt(0)
+      this.iniciais = nome + sobrenome
+      console.log("aqui" + res)
+      console.log(nome)
+      console.log(this.iniciais)
+    }
+    
+
+    
   }
 
   logout() {
-    
+    this.authProvider.removeUser();
     this.navCtrl.setRoot(LoginPage.name);
     
   }

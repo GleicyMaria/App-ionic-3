@@ -25,13 +25,7 @@ export class LoginPage {
     private userProvider: UserProvider,
     public alertCtrl: AlertController,
     public authProvider : AuthProvider
-     ) { 
-      //this.user = this.authProvider.getStorageUser();
-      // if( this.user != 'false'){
-      //   this.navCtrl.setRoot(HomePage.name,{'user': this.user});
-      // }
-     
-    }
+     ) {  }
      
 
   login() {
@@ -67,15 +61,5 @@ export class LoginPage {
   }
 
  
-
-  // ionViewDidEnter(){
-  //   let data = this.authProvider.getUser();
-
-  //   if (data != 'false'){
-  //     this.navCtrl.setRoot(HomePage.name,{'user':data});
-  //   }
-  // }
-   
-
   
 }
