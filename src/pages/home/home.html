@@ -18,8 +18,11 @@
     <ion-item>
         <ion-avatar item-start (click)="changePhoto()">
            
-            <ion-fab top left >
-            <button ion-fab>{{iniciais}}</button>
+            <ion-fab top left *ngIf="foto == null " >
+            <button ion-fab >{{iniciais}}</button>
+            </ion-fab>
+            <ion-fab top left *ngIf="foto != null " >
+                <img src="{{ foto }}" /> 
             </ion-fab>
          
           <!--  <img src="./assets/imgs/icon.png">-->

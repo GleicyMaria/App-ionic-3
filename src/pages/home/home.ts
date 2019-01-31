@@ -64,18 +64,15 @@ export class HomePage {
   getIniciais() {
 
     this.authProvider.getFoto().then((data)=>{this.foto = data});
-
-    if (this.foto != null){
-      this.iniciais = this.foto;
-    }else{
+    
       let res = this.user.nome.split(" ")
       let nome = res[0].charAt(0)
-      let sobrenome = res[res.length - 1].charAt(0)
+      let sobrenome = res[res.length - 1].charAt(0);
       this.iniciais = nome + sobrenome
       console.log("aqui" + res)
       console.log(nome)
       console.log(this.iniciais)
-    }
+    
     
 
     
