@@ -17,9 +17,13 @@ import {PostProvider} from '../providers/post/post'
 import { DatePipe } from '@angular/common';
 import  localeptBr from '@angular/common/locales/pt';
 import {registerLocaleData } from '@angular/common';
-import {ScreenOrientation} from '@ionic-native/screen-orientation';
+
 import { Camera } from '@ionic-native/camera';
+import { AuthProvider } from '../providers/auth/auth';
+import { HomePageModule } from '../pages/home/home.module';
+
 registerLocaleData(localeptBr);
+
 @NgModule({
   declarations: [
     MyApp,
@@ -34,13 +38,13 @@ registerLocaleData(localeptBr);
     ComponentsModule,
     HttpClientModule,
     LoginPageModule,
+    HomePageModule
     
     
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    
+    MyApp
     
 
   ],
@@ -54,8 +58,8 @@ registerLocaleData(localeptBr);
     UserProvider,
     DatePipe,
     Camera,
-    ScreenOrientation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider
   ]
 })
 export class AppModule {}
