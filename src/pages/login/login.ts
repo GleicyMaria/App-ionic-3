@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
-
 import { UserProvider } from '../../providers/user/user';
 import { Session } from '../../providers/session/session';
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -16,14 +16,25 @@ export class LoginPage {
     username:'',
     password:''
   };
+   user:any;
+
+  public checked:boolean=false;
+  
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private userProvider: UserProvider,
     public alertCtrl: AlertController, 
-    public session:Session
+    public session:Session, 
+    public authProvider: AuthProvider
      ) { }
 
   login() {
+   
+    if(this.checked == true){
+      this.authProvider.setCheckbox(this.checked);
+    }else{
+      this.authProvider.removeCheckbox();
+    }
 
     this.userProvider.login(this.dados.username, this.dados.password)
       .then((result: any) => {
@@ -35,9 +46,14 @@ export class LoginPage {
         this.showAlert(error.error.erro.codigo, error.error.erro.mensagem)
         
       })
-    }
 
-   showAlert(codigo, mensagem) {
+      
+  
+  }
+
+ 
+
+  showAlert(codigo, mensagem) {
     const alert = this.alertCtrl.create({
       title: 'Login Invalido',
       subTitle: 'Erro ' + codigo + ' ' + mensagem,
@@ -53,4 +69,6 @@ export class LoginPage {
  
 
 
+ 
+  
 }

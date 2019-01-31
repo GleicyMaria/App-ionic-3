@@ -15,6 +15,7 @@
 
 <ion-content padding>
   <p> selecione uma foto para o seu perfil </p>
+<<<<<<< HEAD
   
     <img src="assets/imgs/perfil-sem-foto.png"> 
 <<<<<<< HEAD
@@ -27,13 +28,19 @@
   </div>
 
 >>>>>>> feature
+=======
+  <div class="foto">
+      <img src="{{photo}}"> 
+  </div>
+      
+>>>>>>> lembrar_usuario
   <ion-item padding>
 
     <button ion-fab float-left class="image" >
-      <ion-icon name="camera"></ion-icon>
+      <ion-icon name="camera" (click)="takePicture()"></ion-icon>
     </button>
     <button ion-fab float-righ class="image" >
-      <ion-icon name="image"></ion-icon>
+      <ion-icon name="image" (click)="getImage()"></ion-icon>
     </button>
 
   </ion-item>

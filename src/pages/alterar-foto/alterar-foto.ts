@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Session } from '../../providers/session/session';
- 
+
 
 
  @IonicPage()
@@ -19,10 +19,7 @@ export class AlterarFotoPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private camera:Camera,
-     private session:Session,
-     
-    ) {
-  }
+     private session:Session,) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AlterarFotoPage');
