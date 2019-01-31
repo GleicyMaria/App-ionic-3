@@ -8,7 +8,11 @@ import hasha from 'hasha';
 @Injectable()
 export class UserProvider {
 
+<<<<<<< HEAD
   private url = 'http://aulas2.getsandbox.com/login'
+=======
+  private url = 'http://aulas2.getsandbox.com'
+>>>>>>> feature
 
 
   constructor(public http: HttpClient) {
@@ -40,7 +44,7 @@ export class UserProvider {
 
   postLogin(data) {
 
-    return this.http.post(this.url, data)
+    return this.http.post(this.url+"/login", data)
   }
 
 

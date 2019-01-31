@@ -1,6 +1,11 @@
 page-alterar-foto {
   $tamanho:100px;
   $marginBotoes : 35px;
+
+  img {
+     display:block;
+     margin: 0 auto;
+  }
     p{
        text-align: center;
     }

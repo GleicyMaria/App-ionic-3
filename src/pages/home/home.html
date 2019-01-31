@@ -17,13 +17,16 @@
 
     <ion-item>
         <ion-avatar item-start (click)="changePhoto()">
-           
+        <div *ngIf="photo == null">
             <ion-fab top left >
             <button ion-fab>{{iniciais}}</button>
             </ion-fab>
-         
-          <!--  <img src="./assets/imgs/icon.png">-->
+        </div>
+        <div *ngIf="photo != null">
+            <img src={{photo}}>
+         </div>
         </ion-avatar>
+        
         <div *ngIf="user != null">
             <h2>{{user.nome}}</h2>
             <p>{{user.login}} </p>

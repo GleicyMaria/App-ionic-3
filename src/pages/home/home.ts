@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { NavController, IonicPage, NavParams } from 'ionic-angular';
+import { Component, NgZone, ChangeDetectorRef } from '@angular/core';
+import { NavController, IonicPage, NavParams, Events } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
 import { ListaMensagemPage } from '../lista-mensagem/lista-mensagem';
 import { ListaPostPage } from '../lista-post/lista-post';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
 import { PostProvider } from '../../providers/post/post';
-
+import { Session } from '../../providers/session/session';
 
 @IonicPage()
 @Component({
@@ -18,24 +18,38 @@ export class HomePage {
   postDestaque: any;
   usuarioLogado;
   public iniciais;
-
+  photo ;
   constructor(public navCtrl: NavController,
     private postPrivider: PostProvider,
     public navParams: NavParams,
-    ) {
+    public session: Session
+    ) {}
 
-  }
 
   ngOnInit() {
-
-        this.getIniciais()
+    this.session.get('user').then(res => {
+      this.user = (res);
+      console.log('usuário logado: ', this.user);
+      console.log(this.user.nome)
+      this.getIniciais();
+      this.setFoto();
+      console.log("foto" + this.photo)
+    });
+    
   
-        
+    }
+    
+   
+  ionViewDidEnter(){
+    if(this.user!=null ){
+      this.setFoto();
+    }
+   
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListaPostPage');
-
+    console.log('ionViewDidLoad Home');
+    
     this.postPrivider.getLetPost().subscribe(
 
       (data) => {
@@ -50,21 +64,33 @@ export class HomePage {
 
   }
 
-  getIniciais() {
+ 
+  setFoto(){
+    this.session.get(this.user.id).then(res =>{
+      this.photo = res;
+      console.log(res);
+      console.log("set foto");
+      console.log(this.photo);
+      
+    })
 
+  }
+
+  getIniciais() {
     let res = this.user.nome.split(" ")
-    let nome = res[0].charAt(0)
-    let sobrenome = res[res.length - 1].charAt(0)
-    this.iniciais = nome + sobrenome
+    let nome = res[0].charAt(0).toUpperCase()
+    let sobrenome = res[res.length - 1].charAt(0).toUpperCase()
+    this.iniciais = nome.concat(sobrenome)
     console.log("aqui" + res)
     console.log(nome)
     console.log(this.iniciais)
   }
+  
 
   logout() {
-    
+    this.session.remove('user');
     this.navCtrl.setRoot(LoginPage.name);
-    
+   
   }
 
   listMessage() {
@@ -77,7 +103,8 @@ export class HomePage {
   }
 
   changePhoto() {
-    this.navCtrl.push(AlterarFotoPage.name)
+    this.navCtrl.push(AlterarFotoPage.name,{'id': this.user.id })
+    
   }
 
 

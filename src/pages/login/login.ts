@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { HomePage } from '../home/home';
 
 import { UserProvider } from '../../providers/user/user';
+import { Session } from '../../providers/session/session';
 
 @IonicPage()
 @Component({
@@ -18,14 +19,17 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private userProvider: UserProvider,
-    public alertCtrl: AlertController,
+    public alertCtrl: AlertController, 
+    public session:Session
      ) { }
 
   login() {
 
     this.userProvider.login(this.dados.username, this.dados.password)
       .then((result: any) => {
-          this.navCtrl.setRoot(HomePage.name,{'user':result});
+           
+        this.criarSession(result);
+        this.navCtrl.setRoot(HomePage.name,{'id':result.id});
 
       }).catch((error: any) => {
         this.showAlert(error.error.erro.codigo, error.error.erro.mensagem)
@@ -42,7 +46,9 @@ export class LoginPage {
     alert.present();
   }
    
-  
+  criarSession(user){
+    this.session.set('user',user);
+  }
   
  
 
