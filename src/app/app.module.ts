@@ -19,8 +19,8 @@ import {registerLocaleData } from '@angular/common';
 
 import { Camera } from '@ionic-native/camera';
 import { AuthProvider } from '../providers/auth/auth';
-import { HomePage } from '../pages/home/home';
 import { HomePageModule } from '../pages/home/home.module';
+
 registerLocaleData(localeptBr);
 
 @NgModule({

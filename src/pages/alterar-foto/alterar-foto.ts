@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { Session } from '../../providers/session/session';
+import {  AuthProvider } from '../../providers/auth/auth';
 
 
 
@@ -19,7 +19,7 @@ export class AlterarFotoPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private camera:Camera,
-     private session:Session,) {}
+     private auth:AuthProvider,) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AlterarFotoPage');
@@ -52,8 +52,8 @@ export class AlterarFotoPage {
   }
 
  fotoLogin(){
-  this.session.set(String(this.id),this.photo);
-  console.log(this.session.set(String(this.id),this.photo))
+  this.auth.set(String(this.id),this.photo);
+  console.log(this.auth.set(String(this.id),this.photo))
   console.log(this.photo)
   
   

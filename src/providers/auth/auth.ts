@@ -17,39 +17,16 @@ export class AuthProvider {
     console.log('Hello AuthProvider Provider');
   }
 
-  setStorageUser(data){
-    return this.storage.set("user",data).then(data => console.log('set usuario: '+data));
-    
+  set(key, user) {
+    return this.storage.set(key, user);
   }
 
-  getStorageUser(){
-    return this.storage.get("user");
-    
+  get(key) {
+    return this.storage.get(key);
   }
 
-  removeUser(){
-    this.storage.remove('user');
-  }  
-
-  getFoto(){
-    return this.storage.get("foto");
-    
+  remove(key) {
+    this.storage.remove(key);
   }
-
-  setFoto(foto){
-    return this.storage.set("foto",foto).then(data => console.log('set foto: '+foto));
-    
-  }
-
-  setCheckbox(data){
-     this.storage.set('checkbox',data).then(data => console.log(data));
-  }
-
-  getCheckbox(){
-    return this.storage.get('checkbox');
-  }
-
-  removeCheckbox(){
-    this.storage.remove('checkbox');
-  }
+  
 }

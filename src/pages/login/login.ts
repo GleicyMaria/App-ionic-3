@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
-import { Session } from '../../providers/session/session';
 import { AuthProvider } from '../../providers/auth/auth';
+
+
 
 @IonicPage()
 @Component({
@@ -24,22 +25,22 @@ export class LoginPage {
     public navParams: NavParams,
     private userProvider: UserProvider,
     public alertCtrl: AlertController, 
-    public session:Session, 
-    public authProvider: AuthProvider
+    public auth:AuthProvider, 
+   
      ) { }
 
   login() {
    
     if(this.checked == true){
-      this.authProvider.setCheckbox(this.checked);
+      this.auth.set('checkbox',this.checked);
     }else{
-      this.authProvider.removeCheckbox();
+      this.auth.remove('checkbox');
     }
 
     this.userProvider.login(this.dados.username, this.dados.password)
       .then((result: any) => {
            
-        this.criarSession(result);
+        this.criarauth(result);
         this.navCtrl.setRoot(HomePage.name,{'id':result.id});
 
       }).catch((error: any) => {
@@ -62,13 +63,8 @@ export class LoginPage {
     alert.present();
   }
    
-  criarSession(user){
-    this.session.set('user',user);
+  criarauth(user){
+    this.auth.set('user',user);
   }
-  
- 
-
-
- 
   
 }

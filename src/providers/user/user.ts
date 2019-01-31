@@ -8,11 +8,7 @@ import hasha from 'hasha';
 @Injectable()
 export class UserProvider {
 
-<<<<<<< HEAD
-  private url = 'http://aulas2.getsandbox.com/login'
-=======
   private url = 'http://aulas2.getsandbox.com'
->>>>>>> feature
 
   
   

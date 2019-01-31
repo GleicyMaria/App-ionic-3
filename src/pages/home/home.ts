@@ -7,7 +7,7 @@ import { ListaPostPage } from '../lista-post/lista-post';
 import { AlterarFotoPage } from '../alterar-foto/alterar-foto';
 import { PostProvider } from '../../providers/post/post';
 import { AuthProvider } from '../../providers/auth/auth';
-import { Session } from '../../providers/session/session';
+
 
 
 @IonicPage()
@@ -20,13 +20,12 @@ export class HomePage {
   postDestaque: any;
   usuarioLogado;
   public iniciais;
-  photo
+  photo = null;
 
   constructor(public navCtrl: NavController,
     private postPrivider: PostProvider,
     public navParams: NavParams,
-    public session:Session,
-    public authProvider: AuthProvider
+    public auth: AuthProvider
     ) {
 
       
@@ -34,7 +33,7 @@ export class HomePage {
 
 
   ngOnInit() {
-    this.session.get('user').then(res => {
+    this.auth.get('user').then(res => {
       this.user = (res);
       console.log('usuário logado: ', this.user);
       console.log(this.user.nome)
@@ -74,7 +73,7 @@ export class HomePage {
 
  
   setFoto(){
-    this.session.get(this.user.id).then(res =>{
+    this.auth.get(this.user.id).then(res =>{
       this.photo = res;
       console.log(res);
       console.log("set foto");
@@ -96,9 +95,8 @@ export class HomePage {
   
 
   logout() {
-    this.session.remove('user');
-    this.authProvider.removeUser();
-    this.authProvider.removeCheckbox();
+    this.auth.remove('user');
+    this.auth.remove('checkbox');
     this.navCtrl.setRoot(LoginPage.name);
    
   }
