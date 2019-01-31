@@ -35,6 +35,9 @@ export class AlterarFotoPage {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
+      targetWidth: 300,
+      targetHeight:300,
+      saveToPhotoAlbum: true
       
     }
  

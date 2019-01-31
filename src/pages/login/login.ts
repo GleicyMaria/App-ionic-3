@@ -18,7 +18,7 @@ export class LoginPage {
   };
    user:any;
 
-  checked:boolean = false;
+  public checked:boolean;
   
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -29,17 +29,19 @@ export class LoginPage {
      
 
   login() {
-       
+   
+    if(this.checked == true){
+      this.authProvider.setCheckbox(this.checked);
+    }else{
+      this.authProvider.removeCheckbox();
+    }
+
     this.userProvider.login(this.dados.username, this.dados.password)
       .then((result: any) => {
-        if (this.checked == true){
-          this.user = result;
-          this.authProvider.setStorageUser(this.user);
-          console.log(this.user);
-        }
-          
-          this.navCtrl.setRoot(HomePage.name,{'user': this.user});
-
+        this.user = result;
+        this.authProvider.setStorageUser(this.user);
+        this.navCtrl.setRoot(HomePage.name,{'user': this.user});
+       
       }).catch((error: any) => {
         this.showAlert(error.error.erro.codigo, error.error.erro.mensagem)
         

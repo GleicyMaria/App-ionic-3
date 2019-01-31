@@ -5,13 +5,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { Storage } from '@ionic/storage';
+import { AuthProvider } from '../providers/auth/auth';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any ='';
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private storage:Storage) {
+  rootPage:any='';
+  result;
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private storage:Storage, private authProvier: AuthProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -22,15 +24,15 @@ export class MyApp {
   }
 
   retornaStorage(){
-    
-      this.storage.get("user").then((data)=>{
-        if(data){
-          console.log(data);
+      //this.authProvier.getCheckbox().then((data)=> {this.result = data
+      this.storage.get('checkbox').then((data)=> {this.result = data
+        if(this.result == true){
           this.rootPage = HomePage;
-        }else{
-          this.rootPage = LoginPage;
-        }
-      })
+        } else{
+          this.rootPage = LoginPage;        
+        } 
+      });
+   
   }
   
 }

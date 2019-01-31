@@ -16,7 +16,7 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  user:any = this.navParams.get('user');
+  user:any = null;
   postDestaque: any;
   usuarioLogado;
   public iniciais;
@@ -31,13 +31,17 @@ export class HomePage {
       
   }
 
+
   ngOnInit() {
 
     this.authProvider.getStorageUser().then((data) => { this.user = data});
     
-    if (this.user != null){
-      this.getIniciais();
-    }    
+    if (this.user == null){
+      this.user = this.navParams.get('user');
+    }
+    
+    this.getIniciais();
+      
     
         
   }
@@ -61,6 +65,7 @@ export class HomePage {
   }
 
   ionViewWillEnter(){
+    this.authProvider.getStorageUser().then((data) => { this.user = data});
     this.authProvider.getFoto().then((data)=>{this.foto = data});
   }
 
@@ -84,6 +89,7 @@ export class HomePage {
 
   logout() {
     this.authProvider.removeUser();
+    this.authProvider.removeCheckbox();
     this.navCtrl.setRoot(LoginPage.name);
     
   }

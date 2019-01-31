@@ -34,4 +34,10 @@ page-home {
         border-radius: 5px;
     }
 
+    .item ion-avatar img {
+        width: $tamanhoAvatar;
+        height: $tamanhoAvatar;
+        border-radius: 50%
+      }
+
 }

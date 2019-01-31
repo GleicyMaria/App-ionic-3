@@ -6,11 +6,16 @@ page-alterar-foto {
     }
      .image{
         margin: $marginBotoes;
+
         
      }
 
        .fab {
           width: $tamanho;
           height: $tamanho;
+      }
+
+      .foto{
+         text-align: center
       }
 }

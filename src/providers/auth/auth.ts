@@ -10,7 +10,8 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class AuthProvider {
 
-  
+  checked:boolean;
+
   constructor(public http: HttpClient,
               public storage: Storage) {
     console.log('Hello AuthProvider Provider');
@@ -27,7 +28,7 @@ export class AuthProvider {
   }
 
   removeUser(){
-    this.storage.remove("user");
+    this.storage.remove('user');
   }  
 
   getFoto(){
@@ -40,4 +41,15 @@ export class AuthProvider {
     
   }
 
+  setCheckbox(data){
+     this.storage.set('checkbox',data).then(data => console.log(data));
+  }
+
+  getCheckbox(){
+    return this.storage.get('checkbox');
+  }
+
+  removeCheckbox(){
+    this.storage.remove('checkbox');
+  }
 }
