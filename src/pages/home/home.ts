@@ -34,16 +34,16 @@ export class HomePage {
 
   ngOnInit() {
 
-    this.authProvider.getStorageUser().then((data) => { this.user = data});
-    
-    if (this.user == null){
-      this.user = this.navParams.get('user');
-    }
-    
-    this.getIniciais();
-      
-    
+    this.authProvider.getStorageUser()
+      .then((data) => {
+        this.user = data
+
+        if (this.user == null){
+          this.user = this.navParams.get('user');
+        }
         
+        this.getIniciais();
+      });
   }
 
   ionViewDidLoad() {
@@ -65,7 +65,7 @@ export class HomePage {
   }
 
   ionViewWillEnter(){
-    this.authProvider.getStorageUser().then((data) => { this.user = data});
+    
     this.authProvider.getFoto().then((data)=>{this.foto = data});
   }
 

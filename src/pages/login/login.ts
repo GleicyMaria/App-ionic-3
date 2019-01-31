@@ -18,7 +18,7 @@ export class LoginPage {
   };
    user:any;
 
-  public checked:boolean;
+  public checked:boolean=false;
   
   constructor(public navCtrl: NavController,
     public navParams: NavParams,

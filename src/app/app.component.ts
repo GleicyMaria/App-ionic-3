@@ -25,8 +25,8 @@ export class MyApp {
 
   retornaStorage(){
       //this.authProvier.getCheckbox().then((data)=> {this.result = data
-      this.storage.get('checkbox').then((data)=> {this.result = data
-        if(this.result == true){
+      this.authProvier.getCheckbox().then((data)=> {
+        if(data){
           this.rootPage = HomePage;
         } else{
           this.rootPage = LoginPage;        

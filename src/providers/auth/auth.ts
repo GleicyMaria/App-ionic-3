@@ -10,7 +10,7 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class AuthProvider {
 
-  checked:boolean;
+ 
 
   constructor(public http: HttpClient,
               public storage: Storage) {
