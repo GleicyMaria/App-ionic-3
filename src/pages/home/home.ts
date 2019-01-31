@@ -60,6 +60,10 @@ export class HomePage {
 
   }
 
+  ionViewWillEnter(){
+    this.authProvider.getFoto().then((data)=>{this.foto = data});
+  }
+
 
   getIniciais() {
 
