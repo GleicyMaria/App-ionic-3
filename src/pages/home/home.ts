@@ -16,7 +16,7 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  user:any = null;
+  user: any = null;
   postDestaque: any;
   usuarioLogado;
   private load
@@ -31,41 +31,41 @@ export class HomePage {
     public auth: AuthProvider
   ) { }
 
-  
+
   ngOnInit() {
     this.auth.get('user').then(res => {
       this.user = (res);
       console.log('usuário logado: ', this.user);
       console.log(this.user.nome)
       this.getIniciais();
-      this.setFoto();
+      this.getFoto();
       console.log("foto" + this.photo)
     });
-    
-  
+
+
+  }
+
+
+  ionViewDidEnter() {
+    if (this.user != null) {
+      this.getFoto();
     }
-    
-   
-  ionViewDidEnter(){
-    if(this.user!=null ){
-      this.setFoto();
-    }
-   
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Home');
-    
+
     this.postPrivider.getLetPost().subscribe(
 
       (data) => {
         console.log(data)
         this.postDestaque = data;
-        
+
       }, error => {
         this.closeLoading();
         this.showAlert(error.message)
-        
+
       }
 
 
@@ -73,13 +73,13 @@ export class HomePage {
 
   }
 
-   setFoto(){
-    this.auth.get(this.user.id).then(res =>{
+  getFoto() {
+    this.auth.get(this.user.id).then(res => {
       this.photo = res;
       console.log(res);
       console.log("set foto");
       console.log(this.photo);
-      
+
     })
 
   }
@@ -93,18 +93,8 @@ export class HomePage {
     console.log(nome)
     console.log(this.iniciais)
   }
-  
-
-  logout() {
-   
-    this.confirmarLogout();
-    
-    
-   
-  }
 
   listMessage() {
-
     this.navCtrl.push(ListaMensagemPage.name, { 'id': this.user.id });
   }
 
@@ -113,8 +103,7 @@ export class HomePage {
   }
 
   changePhoto() {
-    this.navCtrl.push(AlterarFotoPage.name,{'id': this.user.id })
-    
+    this.navCtrl.push(AlterarFotoPage.name, { 'id': this.user.id })
   }
 
   showAlert(mensagem) {
@@ -125,33 +114,34 @@ export class HomePage {
     });
     alert.present();
   }
-  
-  confirmarLogout(){
+
+  logout() {
     const conf = this.alertCtrl.create({
-      title:'Logout',
-      subTitle:' Deseja realmente fazer o logout?',
-      buttons:[{
-        text:'Não'
-      },{
-        text:'Sim',
-        handler: ()=>{
+      title: 'Logout',
+      subTitle: ' Deseja realmente fazer o logout?',
+      buttons: [{
+        text: 'Não'
+      }, {
+        text: 'Sim',
+        handler: () => {
           this.auth.remove('user');
           this.auth.remove('checkbox');
           this.navCtrl.setRoot(LoginPage.name)
         }
-       
+
       }]
     })
     conf.present();
   }
- 
+
   loading() {
-    
     this.load = this.loadingCtrl.create({
       content: "Carregando..."
     });
     this.load.present();
   }
+
+
   closeLoading() {
     this.load.dismiss();
   }

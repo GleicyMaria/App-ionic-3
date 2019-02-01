@@ -12,19 +12,18 @@ import {  AuthProvider } from '../../providers/auth/auth';
 })
 export class AlterarFotoPage {
 
-  
-  id = this.navParams.get('id');
-  photo: any;
+  private id = this.navParams.get('id');
+  public photo: any;
  
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private camera:Camera,
-     private auth:AuthProvider,) {}
+     private auth:AuthProvider,) {
+       this.getFoto();
+     }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AlterarFotoPage');
-   
-  }
+  
+
   get(type){
     
    const options:CameraOptions ={
@@ -37,8 +36,9 @@ export class AlterarFotoPage {
       this.camera.PictureSourceType.SAVEDPHOTOALBUM,
       saveToPhotoAlbum:true,
       correctOrientation:true,
-      targetHeight:500,
-      targetWidth:500,
+      allowEdit:true,
+      targetHeight:400,
+      targetWidth:400,
 
      };
     this.camera.getPicture(options).then((imageData)=>{
@@ -58,6 +58,19 @@ export class AlterarFotoPage {
   
   
    }
+
+
+   getFoto() {
+    this.auth.get(this.id).then(res => {
+      this.photo = res;
+      console.log(res);
+      console.log("set foto");
+      console.log(this.photo);
+
+    })
+
+  }
+ 
   
 
 }
