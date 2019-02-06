@@ -1,44 +1,45 @@
 page-home {
-    $distancia_top:20px;
-    $marginMensagem: 20px auto;
-    $tamanhoAvatar:50px;
-    
-    .item ion-avatar[item-left],
-    .item ion-thumbnail[item-left],
-    .item ion-avatar[item-start],
-    .item ion-thumbnail[item-start] {
-      margin: 8px 16px 31px 0;
-    }
-    .fab .button-inner {
-        font-size: 27px;
-    }
-    .button-full {
-        top: $distancia_top;
-    }
-    
-    .mensagem{
-        margin: $marginMensagem;
-    }
+  $distancia_top: 20px;
+  $marginMensagem: 20px auto;
+  $tamanhoAvatar: 50px;
 
-    .col p{
-        font-size: 11px;
-    }
-    
-    .item ion-avatar img {
-        width: $tamanhoAvatar;
-        height: $tamanhoAvatar;
-        border-radius: 50%
-      }
+  .item ion-avatar[item-left],
+  .item ion-thumbnail[item-left],
+  .item ion-avatar[item-start],
+  .item ion-thumbnail[item-start] {
+    margin: 8px 16px 31px 0;
+  }
+  .fab .button-inner {
+    font-size: 27px;
+  }
+  .button-full {
+    top: $distancia_top;
+  }
 
-      .bar-buttons {
-        background-color:color($colors,danger);
-        border-radius: 5px;
-    }
+  .mensagem {
+    margin: $marginMensagem;
+  }
 
-    .item ion-avatar img {
-        width: $tamanhoAvatar;
-        height: $tamanhoAvatar;
-        border-radius: 50%
-      }
+ 
 
+  .col p {
+    font-size: 11px;
+  }
+
+  .item ion-avatar img {
+    width: $tamanhoAvatar;
+    height: $tamanhoAvatar;
+    border-radius: 50%;
+  }
+
+  .bar-buttons {
+    background-color: color($colors, danger);
+    border-radius: 5px;
+  }
+
+  .item ion-avatar img {
+    width: $tamanhoAvatar;
+    height: $tamanhoAvatar;
+    border-radius: 50%;
+  }
 }

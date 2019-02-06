@@ -86,6 +86,9 @@ export class HomePage {
 
   getIniciais() {
     let res = this.user.nome.split(" ")
+    if(res.length>4){
+      this.user.nome = res[0]+" "+ res[res.length-1];
+    }
     let nome = res[0].charAt(0).toUpperCase()
     let sobrenome = res[res.length - 1].charAt(0).toUpperCase()
     this.iniciais = nome.concat(sobrenome)
